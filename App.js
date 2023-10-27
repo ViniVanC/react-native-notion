@@ -1,12 +1,11 @@
 import React from "react";
-import { NativeBaseProvider, Text, Box } from "native-base";
+import AppContainer from "./src/components/app-container";
+import Navigator from "./src/";
 
 export default function App() {
   return (
-    <NativeBaseProvider>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <Text>Open up App.js</Text>
-      </Box>
-    </NativeBaseProvider>
+    <AppContainer>
+      <Navigator />
+    </AppContainer>
   );
 }
