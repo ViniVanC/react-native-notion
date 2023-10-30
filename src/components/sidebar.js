@@ -1,21 +1,59 @@
 import React, { useCallback } from "react";
-import { Box } from "native-base";
+import { VStack, Center, useColorModeValue } from "native-base";
+import AnimatedColorBox from "./animated-color-box";
 import ThemeToggle from "./theme-toggle";
-import { Feather } from "@expo/vector-icons";
 import MenuButton from "./menu-button";
 
-export const Sidebar = ({ state, navigation }) => {
-  // const currentRoute = state.routeNames[state.index];
+const Sidebar = ({ state, navigation }) => {
+  const currentRoute = state.routeNames[state.index];
 
-  // const handlePressBackButton = useCallback(() => {
-  //   navigation.closeDrawer();
-  // }, [navigation]);
-  // const handlePressMenuHome = useCallback(() => {
-  //   navigation.navigate("Home");
-  // }, [navigation]);
-  // const handlePressMenuAbout = useCallback(() => {
-  //   navigation.navigate("About");
-  // }, [navigation]);
+  const handlePressMenuHome = useCallback(() => {
+    navigation.navigate("Home");
+  }, [navigation]);
 
-  return <Box></Box>;
+  const handlePressMenuTasks = useCallback(() => {
+    navigation.navigate("Tasks");
+  }, [navigation]);
+
+  const handlePressMenuAbout = useCallback(() => {
+    navigation.navigate("About");
+  }, [navigation]);
+
+  return (
+    <AnimatedColorBox
+      safeArea
+      flex={1}
+      bg={useColorModeValue("blue.50", "darkBlue.800")}
+      p={7}
+    >
+      <VStack flex={1} space={2}>
+        <MenuButton
+          active={currentRoute === "Home"}
+          onPress={handlePressMenuHome}
+          icon="home"
+        >
+          Home
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === "Tasks"}
+          onPress={handlePressMenuTasks}
+          icon="inbox"
+        >
+          Tasks
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === "About"}
+          onPress={handlePressMenuAbout}
+          icon="info"
+        >
+          About
+        </MenuButton>
+      </VStack>
+      <Center>
+        <ThemeToggle />
+      </Center>
+    </AnimatedColorBox>
+  );
 };
+
+export default Sidebar;

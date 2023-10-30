@@ -1,20 +1,19 @@
 import * as React from "react";
-import { Text, Box, useColorModeValue, Center, VStack } from "native-base";
-import ThemeToggle from "../components/theme-toggle";
+import { useColorModeValue } from "native-base";
 import NavBar from "../components/navbar";
+import { Masthead } from "../components/masthead";
+import AnimatedColorBox from "../components/animated-color-box";
 
 export function Home() {
   return (
-    <Center
-      _dark={{ bg: "blueGray.900" }}
-      _light={{ bg: "blueGray.50" }}
-      px={4}
+    <AnimatedColorBox
       flex={1}
+      bg={useColorModeValue("warmGray.50", "primary.900")}
+      w="full"
     >
-      <NavBar />
-      <VStack space={5} alignItems="center">
-        <ThemeToggle />
-      </VStack>
-    </Center>
+      <Masthead title={"hi"}>
+        <NavBar />
+      </Masthead>
+    </AnimatedColorBox>
   );
 }

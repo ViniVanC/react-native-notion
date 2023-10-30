@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, HStack, Switch, useColorMode } from "native-base";
 
-export default function ThemeToggle() {
+const ThemeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -14,4 +14,6 @@ export default function ThemeToggle() {
       <Text>Light</Text>
     </HStack>
   );
-}
+};
+
+export default ThemeToggle;

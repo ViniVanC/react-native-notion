@@ -1,10 +1,19 @@
 import * as React from "react";
-import { Button, View } from "react-native";
+import { useColorModeValue } from "native-base";
+import NavBar from "../components/navbar";
+import { Masthead } from "../components/masthead";
+import AnimatedColorBox from "../components/animated-color-box";
 
-export function About({ navigation }) {
+export function About() {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
+    <AnimatedColorBox
+      flex={1}
+      bg={useColorModeValue("warmGray.50", "primary.900")}
+      w="full"
+    >
+      <Masthead title={"About"}>
+        <NavBar />
+      </Masthead>
+    </AnimatedColorBox>
   );
 }
