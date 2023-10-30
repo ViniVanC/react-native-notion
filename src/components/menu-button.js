@@ -29,12 +29,6 @@ const MenuButton = ({ active, icon, children, ...props }) => {
           ? useColorModeValue("green.default", "black.default")
           : "transparent"
       }
-      borderColor={
-        active
-          ? useColorModeValue("green.default", "black.default")
-          : "transparent"
-      }
-      borderWidth={2}
       variant="solid"
       justifyContent="flex-start"
       leftIcon={
