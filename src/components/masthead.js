@@ -1,4 +1,4 @@
-import { Box, Heading, VStack } from "native-base";
+import { Box, Heading, VStack, useColorModeValue } from "native-base";
 import React from "react";
 
 export const Masthead = ({ title, children }) => {
@@ -6,7 +6,11 @@ export const Masthead = ({ title, children }) => {
     <VStack h={"100px"} pb={5}>
       {children}
       <Box flex={1} />
-      <Heading color={"gold"} p={6} size={"x3"}>
+      <Heading
+        color={useColorModeValue("green.default", "black.default")}
+        p={6}
+        size={"x3"}
+      >
         {title}
       </Heading>
     </VStack>

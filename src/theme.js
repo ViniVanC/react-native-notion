@@ -1,3 +1,4 @@
+// "#e2cbcd", "#0a1930"
 import { extendTheme } from "native-base";
 
 const config = {
@@ -17,6 +18,8 @@ const colors = {
     800: "#223044",
     900: "#111822",
   },
+  green: { default: "#a6ccc5", active: "#819f99" },
+  black: { default: "#0a1930", active: "#0c1d39" },
 };
 
 export default extendTheme({ config, colors });

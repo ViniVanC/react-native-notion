@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Sidebar from "./components/sidebar";
 import { Home } from "./screens/Home";

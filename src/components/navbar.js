@@ -1,10 +1,14 @@
 import React, { useCallback } from "react";
-import { HStack, IconButton, useColorMode } from "native-base";
+import {
+  HStack,
+  IconButton,
+  useColorMode,
+  useColorModeValue,
+} from "native-base";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const NavBar = () => {
-  const { colorMode } = useColorMode();
   const navigation = useNavigation();
   const handlePressMenuButton = useCallback(() => {
     navigation.openDrawer();
@@ -19,7 +23,7 @@ const NavBar = () => {
           as: Feather,
           name: "menu",
           size: 6,
-          color: colorMode !== "light" && "white",
+          color: useColorModeValue("green.default", "black.default"),
         }}
       />
     </HStack>
