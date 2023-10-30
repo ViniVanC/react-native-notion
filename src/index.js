@@ -14,7 +14,7 @@ const App = () => {
       drawerContent={(props) => <Sidebar {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerType: "back",
+        drawerType: "slide",
         overlayColor: "#00000060",
       }}
     >
