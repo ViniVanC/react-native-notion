@@ -20,8 +20,14 @@ const ThemeToggle = () => {
         color={useColorModeValue("green.default", "black.default")}
       />
       <Switch
-        offTrackColor={useColorModeValue("green.default", "black.default")}
-        onTrackColor={useColorModeValue("green.default", "black.default")}
+        offTrackColor={useColorModeValue(
+          "green.defaultOpacity",
+          "black.defaultOpacity"
+        )}
+        onTrackColor={useColorModeValue(
+          "green.defaultOpacity",
+          "black.defaultOpacity"
+        )}
         onThumbColor={useColorModeValue("green.default", "black.default")}
         offThumbColor={useColorModeValue("green.default", "black.default")}
         isChecked={colorMode === "light"}
