@@ -6,7 +6,9 @@ import theme from "../theme";
 export default function AppContainer({ children }) {
   return (
     <NavigationContainer>
-      <NativeBaseProvider theme={theme}>{children}</NativeBaseProvider>
+      <NativeBaseProvider theme={theme} config={theme.config}>
+        {children}
+      </NativeBaseProvider>
     </NavigationContainer>
   );
 }

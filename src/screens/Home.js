@@ -11,7 +11,10 @@ export function Home() {
       bg={useColorModeValue("black.default", "green.default")}
       w="full"
     >
-      <Masthead title={"hi"}>
+      <Masthead
+        title={"hi, Vini!"}
+        image={require("../assets/masthead-bg1.jpg")}
+      >
         <NavBar />
       </Masthead>
     </AnimatedColorBox>

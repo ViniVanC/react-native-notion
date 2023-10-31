@@ -1,8 +1,13 @@
 // "#e2cbcd", "#0a1930"
 import { extendTheme } from "native-base";
 
+const LinearGradient = require("expo-linear-gradient").LinearGradient;
+
 const config = {
   useSystemColorMode: true,
+  dependencies: {
+    "linear-gradient": LinearGradient,
+  },
 };
 
 const colors = {
@@ -18,8 +23,8 @@ const colors = {
     800: "#223044",
     900: "#111822",
   },
-  green: { default: "#a6ccc5", defaultOpacity: "#a6ccc550", active: "#819f99" },
-  black: { default: "#0a1930", defaultOpacity: "#0a193050", active: "#152745" },
+  green: { default: "#a6ccc5", defaultOpacity: "#a6ccc595", active: "#819f99" },
+  black: { default: "#0a1930", defaultOpacity: "#0a193095", active: "#152745" },
 };
 
 export default extendTheme({ config, colors });
