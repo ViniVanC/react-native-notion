@@ -1,4 +1,12 @@
-import { Box, Heading, Image, VStack, useColorModeValue } from "native-base";
+import {
+  Box,
+  HStack,
+  Heading,
+  Image,
+  Text,
+  VStack,
+  useColorModeValue,
+} from "native-base";
 import React from "react";
 
 export const Masthead = ({
@@ -7,14 +15,14 @@ export const Masthead = ({
   children,
 }) => {
   return (
-    <VStack h={"220px"} pb={5}>
+    <HStack safeArea h={"150px"} pb={5} alignItems={"center"}>
       <Image
         position="absolute"
         left={0}
         top={0}
         opacity={0.4}
         w="full"
-        h="220px"
+        h="150px"
         resizeMode="cover"
         source={image}
         alt="masthead image"
@@ -24,7 +32,7 @@ export const Masthead = ({
         left={0}
         bottom={0}
         w="full"
-        h="220px"
+        h="150px"
         bg={{
           linearGradient: {
             colors: [
@@ -37,14 +45,14 @@ export const Masthead = ({
         }}
       />
       {children}
-      <Box flex={1} />
-      <Heading
+      <Text
         color={useColorModeValue("green.default", "black.default")}
-        px={6}
-        size={"2xl"}
+        px={3}
+        fontSize={"4xl"}
+        bold
       >
         {title}
-      </Heading>
-    </VStack>
+      </Text>
+    </HStack>
   );
 };

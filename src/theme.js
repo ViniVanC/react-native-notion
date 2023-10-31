@@ -25,6 +25,8 @@ const colors = {
   },
   green: { default: "#a6ccc5", defaultOpacity: "#a6ccc595", active: "#819f99" },
   black: { default: "#0a1930", defaultOpacity: "#0a193095", active: "#152745" },
+  red: "#c98989",
+  blueGreen: "#4aa889",
 };
 
 export default extendTheme({ config, colors });

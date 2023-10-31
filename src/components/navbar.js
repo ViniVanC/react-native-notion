@@ -15,7 +15,7 @@ const NavBar = () => {
   }, [navigation]);
 
   return (
-    <HStack w="full" h={40} alignItems="center" alignContent="center" p={3}>
+    <HStack h={40} alignItems="center" alignContent="center" p={3}>
       <IconButton
         onPress={handlePressMenuButton}
         borderRadius={100}
