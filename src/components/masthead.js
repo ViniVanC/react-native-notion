@@ -3,14 +3,14 @@ import React from "react";
 
 export const Masthead = ({ title, image, children }) => {
   return (
-    <VStack h={300} pb={5}>
+    <VStack h={"220px"} pb={5}>
       <Image
         position="absolute"
         left={0}
         top={0}
-        opacity={0.2}
+        opacity={0.4}
         w="full"
-        h="300px"
+        h="220px"
         resizeMode="cover"
         source={image}
         alt="masthead image"
@@ -20,7 +20,7 @@ export const Masthead = ({ title, image, children }) => {
         left={0}
         bottom={0}
         w="full"
-        h="300px"
+        h="220px"
         bg={{
           linearGradient: {
             colors: [
