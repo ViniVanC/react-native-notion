@@ -1,7 +1,11 @@
 import { Box, Heading, Image, VStack, useColorModeValue } from "native-base";
 import React from "react";
 
-export const Masthead = ({ title, image, children }) => {
+export const Masthead = ({
+  title,
+  image = require("../assets/masthead-bg1.jpg"),
+  children,
+}) => {
   return (
     <VStack h={"220px"} pb={5}>
       <Image
