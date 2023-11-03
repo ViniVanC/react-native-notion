@@ -8,7 +8,7 @@ export function ToDo() {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("black.default", "green.default")}
+      bg={useColorModeValue("black.default", "pink.default")}
       w="full"
     >
       <Masthead title={"ToDo"}>

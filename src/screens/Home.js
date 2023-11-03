@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import {
   Box,
   HStack,
@@ -14,12 +14,14 @@ import NavBar from "../components/navbar";
 import Card from "../components/card";
 import { Masthead } from "../components/masthead";
 import AnimatedColorBox from "../components/animated-color-box";
+import TaskItem from "../components/task-item";
 
 export function Home() {
+  const refScrollView = useRef(null);
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("black.default", "green.default")}
+      bg={useColorModeValue("black.default", "pink.default")}
       w="full"
     >
       <Masthead title={"hi, Vini!"}>
@@ -41,7 +43,7 @@ export function Home() {
                   alignItems={"center"}
                   justifyContent={"center"}
                   _text={{
-                    color: useColorModeValue("green.default", "black.default"),
+                    color: useColorModeValue("pink.default", "black.default"),
                     opacity: 0.5,
                     fontSize: 20,
                   }}
@@ -50,7 +52,7 @@ export function Home() {
                     fontSize={60}
                     lineHeight={60}
                     fontWeight={"bold"}
-                    color={useColorModeValue("green.default", "black.default")}
+                    color={useColorModeValue("pink.default", "black.default")}
                   >
                     3
                   </Text>
@@ -69,8 +71,8 @@ export function Home() {
                 <Text
                   fontSize={40}
                   lineHeight={40}
-                  fontWeight={"semiBold"}
-                  color={useColorModeValue("green.default", "black.default")}
+                  fontWeight={"semibold"}
+                  color={useColorModeValue("pink.default", "black.default")}
                 >
                   352
                 </Text>
@@ -115,29 +117,12 @@ export function Home() {
           <Card title="Tasks">
             <VStack maxH={200}>
               <ScrollView
-                vertical
+                // vertical
                 nestedScrollEnabled={true}
                 contentContainerStyle={{ minHeight: "100px" }}
+                ref={refScrollView}
               >
-                <HStack
-                  py={1.5}
-                  px={4}
-                  mt={2}
-                  rounded={10}
-                  borderWidth={3}
-                  borderColor={useColorModeValue(
-                    "green.default",
-                    "black.default"
-                  )}
-                >
-                  <Text
-                    fontSize={"lg"}
-                    fontWeight={"bold"}
-                    color={useColorModeValue("green.default", "black.default")}
-                  >
-                    Task #1
-                  </Text>
-                </HStack>
+                <TaskItem simultaneousHandlers={refScrollView} />
               </ScrollView>
             </VStack>
           </Card>
@@ -155,20 +140,20 @@ export function Home() {
                   rounded={10}
                   borderWidth={3}
                   borderColor={useColorModeValue(
-                    "green.default",
+                    "pink.default",
                     "black.default"
                   )}
                 >
                   <Text
                     fontSize={"lg"}
                     fontWeight={"bold"}
-                    color={useColorModeValue("green.default", "black.default")}
+                    color={useColorModeValue("pink.default", "black.default")}
                   >
                     Note #1
                   </Text>
                   <Text
                     fontSize={"sm"}
-                    color={useColorModeValue("green.default", "black.default")}
+                    color={useColorModeValue("pink.default", "black.default")}
                   >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Eligendi sequi enim expedita provident dicta similique ipsum

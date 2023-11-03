@@ -9,7 +9,7 @@ const Card = ({ children, title, width = "100%", ...props }) => {
       p={3}
       rounded={10}
       borderWidth={3}
-      borderColor={useColorModeValue("green.default", "black.default")}
+      borderColor={useColorModeValue("pink.default", "black.default")}
       {...props}
     >
       <HStack
@@ -17,12 +17,12 @@ const Card = ({ children, title, width = "100%", ...props }) => {
         justifyContent={"space-between"}
         alignItems={"center"}
         borderBottomWidth={2}
-        borderBottomColor={useColorModeValue("green.default", "black.default")}
+        borderBottomColor={useColorModeValue("pink.default", "black.default")}
       >
         <Text
           fontSize={"lg"}
           fontWeight={"bold"}
-          color={useColorModeValue("green.default", "black.default")}
+          color={useColorModeValue("pink.default", "black.default")}
         >
           {title}
         </Text>
@@ -30,7 +30,7 @@ const Card = ({ children, title, width = "100%", ...props }) => {
           as={Feather}
           name={"arrow-right"}
           size="md"
-          color={useColorModeValue("green.default", "black.default")}
+          color={useColorModeValue("pink.default", "black.default")}
         />
       </HStack>
       {children}

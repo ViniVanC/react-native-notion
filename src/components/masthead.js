@@ -36,7 +36,7 @@ export const Masthead = ({
         bg={{
           linearGradient: {
             colors: [
-              useColorModeValue("black.default", "green.default"),
+              useColorModeValue("black.default", "pink.default"),
               "transparent",
             ],
             start: [1, 1],
@@ -46,7 +46,7 @@ export const Masthead = ({
       />
       {children}
       <Text
-        color={useColorModeValue("green.default", "black.default")}
+        color={useColorModeValue("pink.default", "black.default")}
         px={3}
         fontSize={"4xl"}
         bold
