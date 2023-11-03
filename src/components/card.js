@@ -2,14 +2,23 @@ import React from "react";
 import { Box, HStack, Icon, Text, useColorModeValue } from "native-base";
 import { Feather } from "@expo/vector-icons";
 
-const Card = ({ children, title, width = "100%", ...props }) => {
+const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
   return (
     <Box
       w={width}
       p={3}
       rounded={10}
       borderWidth={3}
-      borderColor={useColorModeValue("pink.default", "black.default")}
+      borderColor={
+        dark
+          ? useColorModeValue("black.default", "pink.default")
+          : useColorModeValue("pink.default", "black.default")
+      }
+      bg={
+        dark
+          ? useColorModeValue("pink.default", "black.default")
+          : useColorModeValue("black.default", "pink.default")
+      }
       {...props}
     >
       <HStack
@@ -17,12 +26,20 @@ const Card = ({ children, title, width = "100%", ...props }) => {
         justifyContent={"space-between"}
         alignItems={"center"}
         borderBottomWidth={2}
-        borderBottomColor={useColorModeValue("pink.default", "black.default")}
+        borderBottomColor={
+          dark
+            ? useColorModeValue("black.default", "pink.default")
+            : useColorModeValue("pink.default", "black.default")
+        }
       >
         <Text
           fontSize={"lg"}
           fontWeight={"bold"}
-          color={useColorModeValue("pink.default", "black.default")}
+          color={
+            dark
+              ? useColorModeValue("black.default", "pink.default")
+              : useColorModeValue("pink.default", "black.default")
+          }
         >
           {title}
         </Text>
@@ -30,7 +47,11 @@ const Card = ({ children, title, width = "100%", ...props }) => {
           as={Feather}
           name={"arrow-right"}
           size="md"
-          color={useColorModeValue("pink.default", "black.default")}
+          color={
+            dark
+              ? useColorModeValue("black.default", "pink.default")
+              : useColorModeValue("pink.default", "black.default")
+          }
         />
       </HStack>
       {children}

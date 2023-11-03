@@ -61,7 +61,7 @@ export function Home() {
               </HStack>
             </Card>
 
-            <Card title="Money" width="45%">
+            <Card title="Money" width="45%" dark={true}>
               <HStack
                 p={5}
                 pb={2}
@@ -72,7 +72,7 @@ export function Home() {
                   fontSize={40}
                   lineHeight={40}
                   fontWeight={"semibold"}
-                  color={useColorModeValue("pink.default", "black.default")}
+                  color={useColorModeValue("black.default", "pink.default")}
                 >
                   352
                 </Text>
@@ -123,10 +123,11 @@ export function Home() {
                 ref={refScrollView}
               >
                 <TaskItem simultaneousHandlers={refScrollView} />
+                <TaskItem simultaneousHandlers={refScrollView} />
               </ScrollView>
             </VStack>
           </Card>
-          <Card title="Notes">
+          <Card title="Notes" dark={true}>
             <VStack maxH={200}>
               <ScrollView
                 vertical
@@ -134,15 +135,10 @@ export function Home() {
                 contentContainerStyle={{ minHeight: "100px" }}
               >
                 <VStack
-                  py={1.5}
-                  px={4}
+                  p={4}
                   mt={2}
                   rounded={10}
-                  borderWidth={3}
-                  borderColor={useColorModeValue(
-                    "pink.default",
-                    "black.default"
-                  )}
+                  bg={useColorModeValue("black.default", "pink.default")}
                 >
                   <Text
                     fontSize={"lg"}
