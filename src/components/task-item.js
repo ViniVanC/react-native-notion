@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useCallback } from "react";
 import {
   Pressable,
   Box,
@@ -7,15 +7,23 @@ import {
   Icon,
   Input,
   useToken,
-  Text,
 } from "native-base";
 import AnimatedCheckbox from "./animated-checkbox";
+import AnimatedTaskLabel from "./animated-task-label";
 import SwipeView from "./swipable-view";
 import { Feather } from "@expo/vector-icons";
 
-const TaskItem = ({ simultaneousHandlers }) => {
-  const [isDone, setIsDone] = useReducer((d) => !d, false);
-
+const TaskItem = ({
+  isEditing,
+  isDone,
+  onToggleCheckbox,
+  subject,
+  onPressLabel,
+  onRemove,
+  onChangeSubject,
+  onFinishEditing,
+  simultaneousHandlers,
+}) => {
   const highlightColor = useToken(
     "colors",
     useColorModeValue("black.default", "pink.default")
@@ -30,19 +38,26 @@ const TaskItem = ({ simultaneousHandlers }) => {
     useColorModeValue("black.default", "pink.default")
   );
 
-  // const activeTextColor = useToken(
-  //   "colors",
-  //   useColorModeValue("darkText", "lightText")
-  // );
-  // const doneTextColor = useToken(
-  //   "colors",
-  //   useColorModeValue("muted.400", "muted.600")
-  // );
+  const activeTextColor = useToken(
+    "colors",
+    useColorModeValue("black.default", "pink.default")
+  );
+  const doneTextColor = useToken(
+    "colors",
+    useColorModeValue("black.defaultOpacity", "pink.defaultOpacity")
+  );
+
+  const handleChangeSubject = useCallback(
+    (e) => {
+      onChangeSubject && onChangeSubject(e.nativeEvent.text);
+    },
+    [onChangeSubject]
+  );
 
   return (
     <SwipeView
       simultaneousHandlers={simultaneousHandlers}
-      onSwipeLeft={() => console.log("r")}
+      onSwipeLeft={onRemove}
       backView={
         <Box
           w="full"
@@ -66,23 +81,39 @@ const TaskItem = ({ simultaneousHandlers }) => {
         bg={useColorModeValue("pink.default", "black.default")}
       >
         <Box width={30} height={30} mr={2}>
-          <Pressable onPress={setIsDone}>
+          <Pressable onPress={onToggleCheckbox}>
             <AnimatedCheckbox
-              checked={isDone}
               highlightColor={highlightColor}
               checkmarkColor={checkmarkColor}
               boxOutlineColor={boxStroke}
+              checked={isDone}
             />
           </Pressable>
         </Box>
-
-        <Text
-          fontSize={"lg"}
-          fontWeight={"bold"}
-          color={useColorModeValue("black.default", "pink.default")}
-        >
-          Task #1
-        </Text>
+        {isEditing ? (
+          <Input
+            placeholder="Task"
+            value={subject}
+            variant="unstyled"
+            color={useColorModeValue("black.default", "pink.default")}
+            fontSize={19}
+            px={1}
+            py={0}
+            autoFocus
+            blurOnSubmit
+            onChange={handleChangeSubject}
+            onBlur={onFinishEditing}
+          />
+        ) : (
+          <AnimatedTaskLabel
+            textColor={activeTextColor}
+            inactiveTextColor={doneTextColor}
+            strikethrough={isDone}
+            onPress={onPressLabel}
+          >
+            {subject}
+          </AnimatedTaskLabel>
+        )}
       </HStack>
     </SwipeView>
   );

@@ -1,8 +1,18 @@
 import React from "react";
-import { Box, HStack, Icon, Text, useColorModeValue } from "native-base";
+import {
+  Box,
+  HStack,
+  Icon,
+  Pressable,
+  Text,
+  useColorModeValue,
+} from "native-base";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
+  const navigation = useNavigation();
+
   return (
     <Box
       w={width}
@@ -43,16 +53,18 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
         >
           {title}
         </Text>
-        <Icon
-          as={Feather}
-          name={"arrow-right"}
-          size="md"
-          color={
-            dark
-              ? useColorModeValue("black.default", "pink.default")
-              : useColorModeValue("pink.default", "black.default")
-          }
-        />
+        <Pressable onPress={() => navigation.navigate(title)}>
+          <Icon
+            as={Feather}
+            name={"arrow-right"}
+            size="md"
+            color={
+              dark
+                ? useColorModeValue("black.default", "pink.default")
+                : useColorModeValue("pink.default", "black.default")
+            }
+          />
+        </Pressable>
       </HStack>
       {children}
     </Box>

@@ -17,7 +17,6 @@ import AnimatedColorBox from "../components/animated-color-box";
 import TaskItem from "../components/task-item";
 
 export function Home() {
-  const refScrollView = useRef(null);
   return (
     <AnimatedColorBox
       flex={1}
@@ -117,13 +116,12 @@ export function Home() {
           <Card title="Tasks">
             <VStack maxH={200}>
               <ScrollView
-                // vertical
+                vertical
                 nestedScrollEnabled={true}
                 contentContainerStyle={{ minHeight: "100px" }}
-                ref={refScrollView}
               >
-                <TaskItem simultaneousHandlers={refScrollView} />
-                <TaskItem simultaneousHandlers={refScrollView} />
+                <TaskItem />
+                <TaskItem />
               </ScrollView>
             </VStack>
           </Card>
