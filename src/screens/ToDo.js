@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { Icon, VStack, useColorModeValue, Fab } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import AnimatedColorBox from "../components/animated-color-box";
@@ -6,7 +6,6 @@ import TaskList from "../components/task-list";
 import shortid from "shortid";
 import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
-
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/actions/todoActions";
 
@@ -42,7 +41,13 @@ export function ToDo() {
         position="absolute"
         renderInPortal={false}
         size="sm"
-        icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
+        icon={
+          <Icon
+            color={useColorModeValue("black.default", "pink.default")}
+            as={<AntDesign name="plus" />}
+            size="sm"
+          />
+        }
         bg={useColorModeValue("pink.default", "black.default")}
         onPress={() => {
           const id = shortid.generate();
