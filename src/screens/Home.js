@@ -115,15 +115,6 @@ export function Home() {
           </HStack>
 
           <Card title="Tasks">
-            {/* <VStack maxH={200}>
-              <ScrollView
-                vertical
-                nestedScrollEnabled={true}
-                contentContainerStyle={{ minHeight: "100px" }}
-              >
-                <TaskItem />
-              </ScrollView>
-            </VStack> */}
             <TaskList />
           </Card>
           <Card title="Notes" dark={true}>
