@@ -7,46 +7,29 @@ import shortid from "shortid";
 import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
 
-const initialData = [
-  {
-    id: shortid.generate(),
-    subject: "Buy movie tickets for Friday",
-    done: false,
-  },
-  {
-    id: shortid.generate(),
-    subject: "Make a React Native tutorial",
-    done: false,
-  },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { addTask, editTask, deleteTask } from "../redux/actions/todoActions";
 
 export function ToDo() {
-  const [data, setData] = useState(initialData);
+  const data = useSelector((state) => state.tasks);
   const [editingItemId, setEditingItemId] = useState(null);
+  const dispatch = useDispatch();
 
-  const handleToggleTaskItem = useCallback((item) => {
-    setData((prevData) => {
-      const newData = [...prevData];
-      const index = prevData.indexOf(item);
-      newData[index] = {
-        ...item,
-        done: !item.done,
-      };
-      return newData;
-    });
-  }, []);
+  const handleToggleTaskItem = useCallback(
+    (item) => {
+      const updatedTask = { ...item, done: !item.done };
+      dispatch(editTask(updatedTask));
+    },
+    [dispatch]
+  );
 
-  const handleChangeTaskItemSubject = useCallback((item, newSubject) => {
-    setData((prevData) => {
-      const newData = [...prevData];
-      const index = prevData.indexOf(item);
-      newData[index] = {
-        ...item,
-        subject: newSubject,
-      };
-      return newData;
-    });
-  }, []);
+  const handleChangeTaskItemSubject = useCallback(
+    (item, newSubject) => {
+      const updatedTask = { ...item, subject: newSubject };
+      dispatch(editTask(updatedTask));
+    },
+    [dispatch]
+  );
 
   const handleFinishEditingTaskItem = useCallback((_item) => {
     setEditingItemId(null);
@@ -56,12 +39,12 @@ export function ToDo() {
     setEditingItemId(item.id);
   }, []);
 
-  const handleRemoveItem = useCallback((item) => {
-    setData((prevData) => {
-      const newData = prevData.filter((i) => i !== item);
-      return newData;
-    });
-  }, []);
+  const handleRemoveItem = useCallback(
+    (item) => {
+      dispatch(deleteTask(item.id));
+    },
+    [dispatch]
+  );
 
   return (
     <AnimatedColorBox
@@ -100,14 +83,13 @@ export function ToDo() {
         bg={useColorModeValue("pink.default", "black.default")}
         onPress={() => {
           const id = shortid.generate();
-          setData([
-            {
+          dispatch(
+            addTask({
               id,
               subject: "",
               done: false,
-            },
-            ...data,
-          ]);
+            })
+          );
           setEditingItemId(id);
         }}
       />
