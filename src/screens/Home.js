@@ -15,6 +15,7 @@ import Card from "../components/card";
 import { Masthead } from "../components/masthead";
 import AnimatedColorBox from "../components/animated-color-box";
 import TaskItem from "../components/task-item";
+import TaskList from "../components/task-list";
 
 export function Home() {
   return (
@@ -114,16 +115,16 @@ export function Home() {
           </HStack>
 
           <Card title="Tasks">
-            <VStack maxH={200}>
+            {/* <VStack maxH={200}>
               <ScrollView
                 vertical
                 nestedScrollEnabled={true}
                 contentContainerStyle={{ minHeight: "100px" }}
               >
                 <TaskItem />
-                <TaskItem />
               </ScrollView>
-            </VStack>
+            </VStack> */}
+            <TaskList />
           </Card>
           <Card title="Notes" dark={true}>
             <VStack maxH={200}>

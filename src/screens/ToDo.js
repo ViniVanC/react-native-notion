@@ -7,44 +7,12 @@ import shortid from "shortid";
 import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
 
-import { useSelector, useDispatch } from "react-redux";
-import { addTask, editTask, deleteTask } from "../redux/actions/todoActions";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/actions/todoActions";
 
 export function ToDo() {
-  const data = useSelector((state) => state.tasks);
   const [editingItemId, setEditingItemId] = useState(null);
   const dispatch = useDispatch();
-
-  const handleToggleTaskItem = useCallback(
-    (item) => {
-      const updatedTask = { ...item, done: !item.done };
-      dispatch(editTask(updatedTask));
-    },
-    [dispatch]
-  );
-
-  const handleChangeTaskItemSubject = useCallback(
-    (item, newSubject) => {
-      const updatedTask = { ...item, subject: newSubject };
-      dispatch(editTask(updatedTask));
-    },
-    [dispatch]
-  );
-
-  const handleFinishEditingTaskItem = useCallback((_item) => {
-    setEditingItemId(null);
-  }, []);
-
-  const handlePressTaskItemLabel = useCallback((item) => {
-    setEditingItemId(item.id);
-  }, []);
-
-  const handleRemoveItem = useCallback(
-    (item) => {
-      dispatch(deleteTask(item.id));
-    },
-    [dispatch]
-  );
 
   return (
     <AnimatedColorBox
@@ -66,13 +34,8 @@ export function ToDo() {
         p="20px"
       >
         <TaskList
-          data={data}
-          onToggleItem={handleToggleTaskItem}
-          onChangeSubject={handleChangeTaskItemSubject}
-          onFinishEditing={handleFinishEditingTaskItem}
-          onPressLabel={handlePressTaskItemLabel}
-          onRemoveItem={handleRemoveItem}
           editingItemId={editingItemId}
+          setEditingItemId={setEditingItemId}
         />
       </VStack>
       <Fab
