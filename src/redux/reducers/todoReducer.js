@@ -1,38 +1,43 @@
-import shortid from "shortid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialState = {
-  tasks: [
-    {
-      id: shortid.generate(),
-      subject: "Buy movie tickets for Friday",
-      done: false,
-    },
-    {
-      id: shortid.generate(),
-      subject: "Make a React Native tutorial",
-      done: false,
-    },
-  ],
+  tasks: [],
+};
+
+const saveTasksToStorage = async (tasks) => {
+  try {
+    await AsyncStorage.setItem("todoData", JSON.stringify(tasks));
+  } catch (error) {
+    console.error("Помилка збереження даних:", error);
+  }
 };
 
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TASK":
+      const updatedTasks = [action.payload, ...state.tasks];
+      saveTasksToStorage(updatedTasks); // Збереження даних в AsyncStorage
       return {
         ...state,
-        tasks: [action.payload, ...state.tasks],
+        tasks: updatedTasks,
       };
     case "EDIT_TASK":
+      const editedTasks = state.tasks.map((task) =>
+        task.id === action.payload.id ? action.payload : task
+      );
+      saveTasksToStorage(editedTasks); // Збереження даних в AsyncStorage
       return {
         ...state,
-        tasks: state.tasks.map((task) =>
-          task.id === action.payload.id ? action.payload : task
-        ),
+        tasks: editedTasks,
       };
     case "DELETE_TASK":
+      const filteredTasks = state.tasks.filter(
+        (task) => task.id !== action.payload
+      );
+      saveTasksToStorage(filteredTasks); // Збереження даних в AsyncStorage
       return {
         ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload),
+        tasks: filteredTasks,
       };
     default:
       return state;

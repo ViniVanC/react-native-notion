@@ -1,10 +1,11 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { AnimatePresence, View } from "moti";
 import { ScrollView } from "react-native-gesture-handler";
 import TaskItem from "./task-item";
 import { makeStyledComponent } from "../utils/styled";
 import { useSelector, useDispatch } from "react-redux";
-import { editTask, deleteTask } from "../redux/actions/todoActions";
+import { editTask, deleteTask, addTask } from "../redux/actions/todoActions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const StyledView = makeStyledComponent(View);
 const StyledScrollView = makeStyledComponent(ScrollView);
@@ -81,6 +82,24 @@ export default function TaskList({ editingItemId, setEditingItemId }) {
 
   const data = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
+
+  const loadTasksFromStorage = async () => {
+    try {
+      const storedData = await AsyncStorage.getItem("todoData");
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        parsedData.forEach((task) => dispatch(addTask(task)));
+      }
+    } catch (error) {
+      console.error("Помилка завантаження даних:", error);
+    }
+  };
+  console.log(data);
+  useEffect(() => {
+    if (data.length === 0) {
+      loadTasksFromStorage();
+    }
+  }, []);
 
   const handleToggleTaskItem = useCallback(
     (item) => {
