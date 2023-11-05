@@ -115,7 +115,9 @@ export function Home() {
           </HStack>
 
           <Card title="Tasks">
-            <TaskList />
+            <Box maxH={200}>
+              <TaskList />
+            </Box>
           </Card>
           <Card title="Notes" dark={true}>
             <VStack maxH={200}>

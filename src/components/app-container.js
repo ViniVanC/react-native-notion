@@ -4,7 +4,7 @@ import { NativeBaseProvider } from "native-base";
 import theme from "../theme";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import rootReducer from "../reducers/todoReducer";
+import rootReducer from "../redux/reducers/todoReducer";
 
 const store = createStore(rootReducer);
 
