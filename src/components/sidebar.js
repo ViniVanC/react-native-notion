@@ -41,13 +41,13 @@ const Sidebar = ({ state, navigation }) => {
         >
           Tasks
         </MenuButton>
-        <MenuButton
+        {/* <MenuButton
           active={currentRoute === "About"}
           onPress={handlePressMenuAbout}
           icon="info"
         >
           About
-        </MenuButton>
+        </MenuButton> */}
       </VStack>
       <Center>
         <ThemeToggle />

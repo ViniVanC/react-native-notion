@@ -20,7 +20,7 @@ const App = () => {
     >
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Tasks" component={ToDo} />
-      <Drawer.Screen name="About" component={About} />
+      {/* <Drawer.Screen name="About" component={About} /> */}
     </Drawer.Navigator>
   );
 };

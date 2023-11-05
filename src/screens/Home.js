@@ -30,7 +30,7 @@ export function Home() {
 
       <ScrollView vertical contentContainerStyle={{ minHeight: "100px" }}>
         <VStack flex={1} px={6} pb={5} space={3}>
-          <HStack space={3}>
+          {/* <HStack space={3}>
             <Card title="Habit" width="50%">
               <HStack
                 p={5}
@@ -112,14 +112,14 @@ export function Home() {
                 </Pressable>
               </HStack>
             </Card>
-          </HStack>
+          </HStack> */}
 
           <Card title="Tasks">
             <Box maxH={200}>
               <TaskList />
             </Box>
           </Card>
-          <Card title="Notes" dark={true}>
+          {/* <Card title="Notes" dark={true}>
             <VStack maxH={200}>
               <ScrollView
                 vertical
@@ -152,7 +152,7 @@ export function Home() {
                 </VStack>
               </ScrollView>
             </VStack>
-          </Card>
+          </Card> */}
         </VStack>
       </ScrollView>
     </AnimatedColorBox>
