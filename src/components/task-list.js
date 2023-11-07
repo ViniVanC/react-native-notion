@@ -94,7 +94,7 @@ export default function TaskList({ editingItemId, setEditingItemId }) {
       console.error("Помилка завантаження даних:", error);
     }
   };
-  console.log(data);
+
   useEffect(() => {
     if (data.length === 0) {
       loadTasksFromStorage();

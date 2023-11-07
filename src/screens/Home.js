@@ -14,7 +14,6 @@ import NavBar from "../components/navbar";
 import Card from "../components/card";
 import { Masthead } from "../components/masthead";
 import AnimatedColorBox from "../components/animated-color-box";
-import TaskItem from "../components/task-item";
 import TaskList from "../components/task-list";
 
 export function Home() {
@@ -24,7 +23,7 @@ export function Home() {
       bg={useColorModeValue("black.default", "pink.default")}
       w="full"
     >
-      <Masthead title={"hi, Vini!"}>
+      <Masthead title={"hi!"}>
         <NavBar />
       </Masthead>
 
