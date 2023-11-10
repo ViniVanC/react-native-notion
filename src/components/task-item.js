@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import {
   Pressable,
   Box,
-  HStack,
   useColorModeValue,
   Icon,
   Input,
@@ -23,6 +22,7 @@ const TaskItem = ({
   onChangeSubject,
   onFinishEditing,
   simultaneousHandlers,
+  handleOpenModal,
 }) => {
   const highlightColor = useToken(
     "colors",
@@ -72,13 +72,15 @@ const TaskItem = ({
         </Box>
       }
     >
-      <HStack
+      <Pressable
+        flexDirection="row"
         alignItems="center"
         w="full"
         p={2}
         mt={2}
         rounded={10}
         bg={useColorModeValue("pink.default", "black.default")}
+        onLongPress={handleOpenModal}
       >
         <Box width={30} height={30} mr={2}>
           <Pressable onPress={onToggleCheckbox}>
@@ -105,16 +107,18 @@ const TaskItem = ({
             onBlur={onFinishEditing}
           />
         ) : (
-          <AnimatedTaskLabel
-            textColor={activeTextColor}
-            inactiveTextColor={doneTextColor}
-            strikethrough={isDone}
-            onPress={onPressLabel}
-          >
-            {subject}
-          </AnimatedTaskLabel>
+          <>
+            <AnimatedTaskLabel
+              textColor={activeTextColor}
+              inactiveTextColor={doneTextColor}
+              strikethrough={isDone}
+              onPress={onPressLabel}
+            >
+              {subject}
+            </AnimatedTaskLabel>
+          </>
         )}
-      </HStack>
+      </Pressable>
     </SwipeView>
   );
 };

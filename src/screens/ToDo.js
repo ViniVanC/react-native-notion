@@ -8,10 +8,23 @@ import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/actions/todoActions";
+import Folder from "../components/folder";
 
 export function ToDo() {
   const [editingItemId, setEditingItemId] = useState(null);
   const dispatch = useDispatch();
+  const [currentFolder, setCurrentFolder] = useState("all");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [taskItemId, setTaskItemId] = useState(null);
+
+  const openModal = (id) => {
+    setTaskItemId(id);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   return (
     <AnimatedColorBox
@@ -23,18 +36,24 @@ export function ToDo() {
         <NavBar />
       </Masthead>
 
+      <Folder
+        currentFolder={currentFolder}
+        setCurrentFolder={setCurrentFolder}
+        modalVisible={modalVisible}
+        closeModal={closeModal}
+        taskItemId={taskItemId}
+      />
+
       <VStack
         flex={1}
-        space={1}
         bg={useColorModeValue("black.default", "pink.default")}
-        mt="-20px"
-        borderTopLeftRadius="20px"
-        borderTopRightRadius="20px"
-        p="20px"
+        px="20px"
       >
         <TaskList
+          currentFolder={currentFolder}
           editingItemId={editingItemId}
           setEditingItemId={setEditingItemId}
+          openModal={openModal}
         />
       </VStack>
       <Fab
@@ -56,9 +75,11 @@ export function ToDo() {
               id,
               subject: "",
               done: false,
+              folders: ["all"],
             })
           );
           setEditingItemId(id);
+          setCurrentFolder("all");
         }}
       />
     </AnimatedColorBox>

@@ -19,6 +19,7 @@ export const AnimatedTaskItem = ({
   onFinishEditing,
   onPressLabel,
   onRemove,
+  openModal,
 }) => {
   const handleToggleCheckbox = useCallback(() => {
     onToggleItem(data);
@@ -42,6 +43,10 @@ export const AnimatedTaskItem = ({
   const handleRemove = useCallback(() => {
     onRemove(data);
   }, [data, onRemove]);
+
+  const handleOpenModal = useCallback(() => {
+    openModal(data.id);
+  }, [data, openModal]);
 
   return (
     <StyledView
@@ -72,15 +77,21 @@ export const AnimatedTaskItem = ({
         onFinishEditing={handleFinishEditing}
         onPressLabel={handlePressLabel}
         onRemove={handleRemove}
+        handleOpenModal={handleOpenModal}
       />
     </StyledView>
   );
 };
 
-export default function TaskList({ editingItemId, setEditingItemId }) {
+export default function TaskList({
+  editingItemId,
+  setEditingItemId,
+  currentFolder,
+  openModal,
+}) {
   const refScrollView = useRef(null);
 
-  const data = useSelector((state) => state.tasks);
+  const data = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const loadTasksFromStorage = async () => {
@@ -135,19 +146,22 @@ export default function TaskList({ editingItemId, setEditingItemId }) {
   return (
     <StyledScrollView ref={refScrollView} w="full">
       <AnimatePresence>
-        {data.map((item) => (
-          <AnimatedTaskItem
-            key={item.id}
-            data={item}
-            simultaneousHandlers={refScrollView}
-            isEditing={item.id === editingItemId}
-            onToggleItem={handleToggleTaskItem}
-            onChangeSubject={handleChangeTaskItemSubject}
-            onFinishEditing={handleFinishEditingTaskItem}
-            onPressLabel={handlePressTaskItemLabel}
-            onRemove={handleRemoveItem}
-          />
-        ))}
+        {data.tasks
+          .filter((item) => item.folders.includes(currentFolder))
+          .map((item) => (
+            <AnimatedTaskItem
+              key={item.id}
+              data={item}
+              simultaneousHandlers={refScrollView}
+              isEditing={item.id === editingItemId}
+              onToggleItem={handleToggleTaskItem}
+              onChangeSubject={handleChangeTaskItemSubject}
+              onFinishEditing={handleFinishEditingTaskItem}
+              onPressLabel={handlePressTaskItemLabel}
+              onRemove={handleRemoveItem}
+              openModal={openModal}
+            />
+          ))}
       </AnimatePresence>
     </StyledScrollView>
   );

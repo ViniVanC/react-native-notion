@@ -115,7 +115,7 @@ export function Home() {
 
           <Card title="Tasks">
             <Box maxH={200}>
-              <TaskList />
+              <TaskList currentFolder={"all"} />
             </Box>
           </Card>
           {/* <Card title="Notes" dark={true}>
