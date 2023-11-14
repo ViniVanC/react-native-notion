@@ -31,7 +31,7 @@ function FolderItem({
       placeholder="Name"
       value={name}
       variant="unstyled"
-      color={useColorModeValue("pink.default", "black.default")}
+      color={useColorModeValue("black.default", "pink.default")}
       fontWeight={"bold"}
       fontSize={"lg"}
       px={2.5}
@@ -45,13 +45,13 @@ function FolderItem({
     <HStack
       bg={
         id === currentFolder
-          ? useColorModeValue("pink.default", "black.default")
+          ? useColorModeValue("black.default", "pink.default")
           : "transparent"
       }
       rounded={5}
-      px={2.5}
+      px={1.5}
       alignItems={"center"}
-      space={1}
+      space={1.5}
     >
       <Pressable
         flex={1}
@@ -64,8 +64,8 @@ function FolderItem({
           fontWeight={"bold"}
           color={
             id === currentFolder
-              ? useColorModeValue("black.default", "pink.default")
-              : useColorModeValue("pink.default", "black.default")
+              ? useColorModeValue("pink.default", "black.default")
+              : useColorModeValue("black.default", "pink.default")
           }
         >
           {name}
@@ -81,8 +81,8 @@ function FolderItem({
           <Icon
             color={
               id === currentFolder
-                ? useColorModeValue("black.default", "pink.default")
-                : useColorModeValue("pink.default", "black.default")
+                ? useColorModeValue("pink.default", "black.default")
+                : useColorModeValue("black.default", "pink.default")
             }
             as={<Feather name="trash-2" />}
             size="sm"

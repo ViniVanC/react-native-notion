@@ -21,13 +21,13 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
       borderWidth={3}
       borderColor={
         dark
-          ? useColorModeValue("black.default", "pink.default")
-          : useColorModeValue("pink.default", "black.default")
+          ? useColorModeValue("pink.default", "black.default")
+          : useColorModeValue("black.default", "pink.default")
       }
       bg={
         dark
-          ? useColorModeValue("pink.default", "black.default")
-          : useColorModeValue("black.default", "pink.default")
+          ? useColorModeValue("black.default", "pink.default")
+          : useColorModeValue("pink.default", "black.default")
       }
       {...props}
     >
@@ -38,8 +38,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
         borderBottomWidth={2}
         borderBottomColor={
           dark
-            ? useColorModeValue("black.default", "pink.default")
-            : useColorModeValue("pink.default", "black.default")
+            ? useColorModeValue("pink.default", "black.default")
+            : useColorModeValue("black.default", "pink.default")
         }
       >
         <Text
@@ -47,8 +47,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
           fontWeight={"bold"}
           color={
             dark
-              ? useColorModeValue("black.default", "pink.default")
-              : useColorModeValue("pink.default", "black.default")
+              ? useColorModeValue("pink.default", "black.default")
+              : useColorModeValue("black.default", "pink.default")
           }
         >
           {title}
@@ -60,8 +60,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
             size="md"
             color={
               dark
-                ? useColorModeValue("black.default", "pink.default")
-                : useColorModeValue("pink.default", "black.default")
+                ? useColorModeValue("pink.default", "black.default")
+                : useColorModeValue("black.default", "pink.default")
             }
           />
         </Pressable>

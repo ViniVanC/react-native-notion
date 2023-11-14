@@ -27,17 +27,17 @@ const FolderPopup = ({
     <Modal isOpen={modalVisible} onClose={closeModal} size={"md"}>
       <Modal.Content bg={useColorModeValue("black.default", "pink.default")}>
         <Modal.CloseButton
-          bg={useColorModeValue("pink.default", "black.default")}
+          bg={useColorModeValue("black.default", "pink.default")}
           rounded={100}
           _icon={{
-            color: useColorModeValue("black.default", "pink.default"),
+            color: useColorModeValue("pink.default", "black.default"),
           }}
         />
         <Modal.Header
-          bg={useColorModeValue("black.default", "pink.default")}
+          bg={useColorModeValue("pink.default", "black.default")}
           borderBottomWidth={0}
           _text={{
-            color: useColorModeValue("pink.default", "black.default"),
+            color: useColorModeValue("black.default", "pink.default"),
             fontWeight: "bold",
           }}
         >
@@ -55,13 +55,13 @@ const FolderPopup = ({
         <Modal.Footer
           borderTopWidth={0}
           py={2}
-          bg={useColorModeValue("black.default", "pink.default")}
+          bg={useColorModeValue("pink.default", "black.default")}
         >
           <Pressable
             onPress={() => handleAddTaskToFolder(taskItemId, currentFolder)}
             p={2}
             rounded={50}
-            bg={useColorModeValue("pink.default", "black.default")}
+            bg={useColorModeValue("black.default", "pink.default")}
           >
             <Icon
               color={useColorModeValue("black.default", "pink.default")}

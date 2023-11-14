@@ -5,7 +5,7 @@ import { Circle, Path, Rect, Svg } from "react-native-svg";
 export const Masthead = ({ title, children }) => {
   const svgIconColor = useToken(
     "colors",
-    useColorModeValue("pink.default", "black.default")
+    useColorModeValue("black.default", "pink.default")
   );
 
   return (
@@ -52,7 +52,7 @@ export const Masthead = ({ title, children }) => {
       </HStack>
       {children}
       <Text
-        color={useColorModeValue("pink.default", "black.default")}
+        color={useColorModeValue("black.default", "pink.default")}
         px={3}
         fontSize={"4xl"}
         bold

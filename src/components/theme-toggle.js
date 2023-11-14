@@ -17,19 +17,19 @@ const ThemeToggle = () => {
         as={Feather}
         name="moon"
         size="md"
-        color={useColorModeValue("pink.default", "black.default")}
+        color={useColorModeValue("black.default", "pink.default")}
       />
       <Switch
         offTrackColor={useColorModeValue(
-          "pink.defaultOpacity",
-          "black.defaultOpacity"
+          "black.defaultOpacity",
+          "pink.defaultOpacity"
         )}
         onTrackColor={useColorModeValue(
-          "pink.defaultOpacity",
-          "black.defaultOpacity"
+          "black.defaultOpacity",
+          "pink.defaultOpacity"
         )}
-        onThumbColor={useColorModeValue("pink.default", "black.default")}
-        offThumbColor={useColorModeValue("pink.default", "black.default")}
+        onThumbColor={useColorModeValue("black.default", "pink.default")}
+        offThumbColor={useColorModeValue("black.default", "pink.default")}
         isChecked={colorMode === "light"}
         onToggle={toggleColorMode}
       ></Switch>
@@ -37,7 +37,7 @@ const ThemeToggle = () => {
         as={Feather}
         name="sun"
         size="md"
-        color={useColorModeValue("pink.default", "black.default")}
+        color={useColorModeValue("black.default", "pink.default")}
       />
     </HStack>
   );

@@ -36,35 +36,35 @@ const Folder = ({
         currentFolder={currentFolder}
         setCurrentFolder={setCurrentFolder}
       />
-      <Box
-        h="30px"
-        w="30px"
-        alignItems={"center"}
-        justifyContent={"center"}
-        rounded={50}
-        p={1}
-        bg={useColorModeValue("pink.default", "black.default")}
+      <Pressable
+        onPress={() => {
+          const id = shortid.generate();
+          dispatch(
+            createFolder({
+              id: id,
+              name: "",
+              tasks: [],
+            })
+          );
+          setEditingItemId(id);
+        }}
       >
-        <Pressable
-          onPress={() => {
-            const id = shortid.generate();
-            dispatch(
-              createFolder({
-                id: id,
-                name: "",
-                tasks: [],
-              })
-            );
-            setEditingItemId(id);
-          }}
+        <Box
+          h="30px"
+          w="30px"
+          alignItems={"center"}
+          justifyContent={"center"}
+          rounded={50}
+          p={1}
+          bg={useColorModeValue("black.default", "pink.default")}
         >
           <Icon
-            color={useColorModeValue("black.default", "pink.default")}
+            color={useColorModeValue("pink.default", "black.default")}
             as={<AntDesign name="plus" />}
             size="sm"
           />
-        </Pressable>
-      </Box>
+        </Box>
+      </Pressable>
     </HStack>
   );
 };

@@ -20,7 +20,7 @@ export function Home() {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("black.default", "pink.default")}
+      bg={useColorModeValue("pink.default", "black.default")}
       w="full"
     >
       <Masthead title={"hi!"}>
@@ -42,7 +42,7 @@ export function Home() {
                   alignItems={"center"}
                   justifyContent={"center"}
                   _text={{
-                    color: useColorModeValue("pink.default", "black.default"),
+                    color: useColorModeValue("black.default", "pink.default"),
                     opacity: 0.5,
                     fontSize: 20,
                   }}
@@ -51,7 +51,7 @@ export function Home() {
                     fontSize={60}
                     lineHeight={60}
                     fontWeight={"bold"}
-                    color={useColorModeValue("pink.default", "black.default")}
+                    color={useColorModeValue("black.default", "pink.default")}
                   >
                     3
                   </Text>
@@ -134,13 +134,13 @@ export function Home() {
                   <Text
                     fontSize={"lg"}
                     fontWeight={"bold"}
-                    color={useColorModeValue("pink.default", "black.default")}
+                    color={useColorModeValue("black.default", "pink.default")}
                   >
                     Note #1
                   </Text>
                   <Text
                     fontSize={"sm"}
-                    color={useColorModeValue("pink.default", "black.default")}
+                    color={useColorModeValue("black.default", "pink.default")}
                   >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Eligendi sequi enim expedita provident dicta similique ipsum

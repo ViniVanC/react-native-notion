@@ -6,11 +6,12 @@ import TaskList from "../components/task-list";
 import shortid from "shortid";
 import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../redux/actions/todoActions";
 import Folder from "../components/folder";
 
 export function ToDo() {
+  const data = useSelector((state) => state);
   const [editingItemId, setEditingItemId] = useState(null);
   const dispatch = useDispatch();
   const [currentFolder, setCurrentFolder] = useState("all");
@@ -29,24 +30,26 @@ export function ToDo() {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("black.default", "pink.default")}
+      bg={useColorModeValue("pink.default", "black.default")}
       w="full"
     >
       <Masthead title={"ToDo"}>
         <NavBar />
       </Masthead>
 
-      <Folder
-        currentFolder={currentFolder}
-        setCurrentFolder={setCurrentFolder}
-        modalVisible={modalVisible}
-        closeModal={closeModal}
-        taskItemId={taskItemId}
-      />
+      {data.folders.length !== 0 && (
+        <Folder
+          currentFolder={currentFolder}
+          setCurrentFolder={setCurrentFolder}
+          modalVisible={modalVisible}
+          closeModal={closeModal}
+          taskItemId={taskItemId}
+        />
+      )}
 
       <VStack
         flex={1}
-        bg={useColorModeValue("black.default", "pink.default")}
+        bg={useColorModeValue("pink.default", "black.default")}
         px="20px"
       >
         <TaskList
@@ -62,12 +65,12 @@ export function ToDo() {
         size="sm"
         icon={
           <Icon
-            color={useColorModeValue("black.default", "pink.default")}
+            color={useColorModeValue("pink.default", "black.default")}
             as={<AntDesign name="plus" />}
             size="sm"
           />
         }
-        bg={useColorModeValue("pink.default", "black.default")}
+        bg={useColorModeValue("black.default", "pink.default")}
         onPress={() => {
           const id = shortid.generate();
           dispatch(
