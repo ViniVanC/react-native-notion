@@ -70,6 +70,9 @@ export function ToDo() {
             size="sm"
           />
         }
+        _pressed={{
+          bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
+        }}
         bg={useColorModeValue("black.default", "pink.default")}
         onPress={() => {
           const id = shortid.generate();

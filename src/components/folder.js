@@ -2,9 +2,8 @@ import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import FolderList from "./folder-list";
 import { createFolder } from "../redux/actions/todoActions";
-import { Box, HStack, Icon, useColorModeValue } from "native-base";
+import { Box, HStack, Icon, Pressable, useColorModeValue } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
-import { Pressable } from "react-native";
 import shortid from "shortid";
 import FolderPopup from "./folder-popup";
 
@@ -37,6 +36,16 @@ const Folder = ({
         setCurrentFolder={setCurrentFolder}
       />
       <Pressable
+        h="30px"
+        w="30px"
+        alignItems={"center"}
+        justifyContent={"center"}
+        rounded={50}
+        p={1}
+        bg={useColorModeValue("black.default", "pink.default")}
+        _pressed={{
+          bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
+        }}
         onPress={() => {
           const id = shortid.generate();
           dispatch(
@@ -49,21 +58,11 @@ const Folder = ({
           setEditingItemId(id);
         }}
       >
-        <Box
-          h="30px"
-          w="30px"
-          alignItems={"center"}
-          justifyContent={"center"}
-          rounded={50}
-          p={1}
-          bg={useColorModeValue("black.default", "pink.default")}
-        >
-          <Icon
-            color={useColorModeValue("pink.default", "black.default")}
-            as={<AntDesign name="plus" />}
-            size="sm"
-          />
-        </Box>
+        <Icon
+          color={useColorModeValue("pink.default", "black.default")}
+          as={<AntDesign name="plus" />}
+          size="sm"
+        />
       </Pressable>
     </HStack>
   );

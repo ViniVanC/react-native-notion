@@ -17,6 +17,7 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
     <Box
       w={width}
       p={3}
+      pt={1.5}
       rounded={10}
       borderWidth={3}
       borderColor={
@@ -53,15 +54,28 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
         >
           {title}
         </Text>
-        <Pressable onPress={() => navigation.navigate(title)}>
+        <Pressable
+          alignItems={"center"}
+          justifyContent={"center"}
+          rounded={10}
+          p={1}
+          bg={useColorModeValue("black.default", "pink.default")}
+          _pressed={{
+            bg: useColorModeValue(
+              "black.defaultOpacity",
+              "pink.defaultOpacity"
+            ),
+          }}
+          onPress={() => navigation.navigate(title)}
+        >
           <Icon
             as={Feather}
             name={"arrow-right"}
             size="md"
             color={
               dark
-                ? useColorModeValue("pink.default", "black.default")
-                : useColorModeValue("black.default", "pink.default")
+                ? useColorModeValue("black.default", "pink.default")
+                : useColorModeValue("pink.default", "black.default")
             }
           />
         </Pressable>
