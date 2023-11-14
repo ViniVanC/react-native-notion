@@ -4,7 +4,12 @@ import { ScrollView } from "react-native-gesture-handler";
 import TaskItem from "./task-item";
 import { makeStyledComponent } from "../utils/styled";
 import { useSelector, useDispatch } from "react-redux";
-import { editTask, deleteTask, addTask } from "../redux/actions/todoActions";
+import {
+  editTask,
+  deleteTask,
+  addTask,
+  createFolder,
+} from "../redux/actions/todoActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const StyledView = makeStyledComponent(View);
@@ -99,15 +104,16 @@ export default function TaskList({
       const storedData = await AsyncStorage.getItem("todoData");
       if (storedData) {
         const parsedData = JSON.parse(storedData);
-        parsedData.forEach((task) => dispatch(addTask(task)));
+        parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
+        parsedData.tasks.forEach((task) => dispatch(addTask(task)));
       }
     } catch (error) {
-      console.error("Помилка завантаження даних:", error);
+      console.error("Помилка завантаження f&t:", error);
     }
   };
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (data.folders.length >= 0 && data.folders.length <= 1) {
       loadTasksFromStorage();
     }
   }, []);

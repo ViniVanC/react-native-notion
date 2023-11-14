@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialState = {
   tasks: [],
-  folders: [{ id: "all", name: "All", tasks: [] }],
+  folders: [],
 };
 
 const saveDataToStorage = async (data) => {
@@ -17,25 +17,40 @@ const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TASK":
       const updatedTasks = [...state.tasks, action.payload];
-
       const allFolderIndex = state.folders.findIndex(
         (folder) => folder.id === "all"
       );
-      const allFolder = state.folders[allFolderIndex];
+      if (allFolderIndex === -1) {
+        const newAllFolder = {
+          id: "all",
+          name: "All",
+          tasks: [action.payload.id],
+        };
+        const modifiedFoldersWithAll = [newAllFolder, ...state.folders];
+
+        saveDataToStorage({
+          tasks: updatedTasks,
+          folders: modifiedFoldersWithAll,
+        });
+
+        return {
+          ...state,
+          tasks: updatedTasks,
+          folders: modifiedFoldersWithAll,
+        };
+      }
+
       const updatedAllFolder = {
-        ...allFolder,
-        tasks: [action.payload.id, ...allFolder.tasks],
+        ...state.folders[allFolderIndex],
+        tasks: [action.payload.id, ...state.folders[allFolderIndex].tasks],
       };
+      const modifiedFolders = state.folders.map((folder, index) =>
+        index === allFolderIndex ? updatedAllFolder : folder
+      );
 
-      const modifiedFolders = [...state.folders];
-      modifiedFolders[allFolderIndex] = updatedAllFolder;
+      saveDataToStorage({ tasks: updatedTasks, folders: modifiedFolders });
 
-      saveDataToStorage({ tasks: updatedTasks, folders: state.folders });
-      return {
-        ...state,
-        tasks: updatedTasks,
-        folders: modifiedFolders,
-      };
+      return { ...state, tasks: updatedTasks, folders: modifiedFolders };
 
     case "EDIT_TASK":
       const editedTasks = state.tasks.map((task) =>
@@ -50,28 +65,20 @@ const todoReducer = (state = initialState, action) => {
     case "DELETE_TASK":
       const taskIdToDelete = action.payload;
 
-      // Знайдемо індекс папки "all"
-      const removeAllFolderIndex = state.folders.findIndex(
-        (folder) => folder.id === "all"
-      );
-      const removeAllFolder = state.folders[removeAllFolderIndex];
+      const removeModifiedFolders = state.folders.map((folder) => {
+        if (folder.id === "all") {
+          return {
+            ...folder,
+            tasks: folder.tasks.filter((taskId) => taskId !== taskIdToDelete),
+          };
+        }
+        return folder;
+      });
 
-      // Видалимо ідентифікатор задачі з папки "all"
-      const removeUpdatedAllFolder = {
-        ...removeAllFolder,
-        tasks: removeAllFolder.tasks.filter(
-          (taskId) => taskId !== taskIdToDelete
-        ),
-      };
-
-      // Оновлюємо масив папок
-      const removeModifiedFolders = [...state.folders];
-      removeModifiedFolders[removeAllFolderIndex] = removeUpdatedAllFolder;
-
-      // Фільтруємо задачі для видалення
       const filteredTasks = state.tasks.filter(
         (task) => task.id !== taskIdToDelete
       );
+
       saveDataToStorage({
         tasks: filteredTasks,
         folders: removeModifiedFolders,
@@ -95,7 +102,7 @@ const todoReducer = (state = initialState, action) => {
       const editedFolders = state.folders.map((folder) =>
         folder.id === action.payload.id ? action.payload : folder
       );
-      saveDataToStorage({ folders: editedFolders, tasks: state.tasks });
+      saveDataToStorage({ tasks: state.tasks, folders: editedFolders });
       return {
         ...state,
         folders: editedFolders,

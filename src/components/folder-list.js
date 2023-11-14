@@ -1,10 +1,15 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ScrollView } from "native-base";
 import FolderItem from "./folder-item";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyledComponent } from "../utils/styled";
-import { deleteFolder, editFolder } from "../redux/actions/todoActions";
+import {
+  createFolder,
+  deleteFolder,
+  editFolder,
+} from "../redux/actions/todoActions";
 import { AnimatePresence, View } from "moti";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const StyledView = makeStyledComponent(View);
 const StyledScrollView = makeStyledComponent(ScrollView);
@@ -72,6 +77,24 @@ function FolderList({
 }) {
   const data = useSelector((state) => state.folders);
   const dispatch = useDispatch();
+
+  // const loadTasksFromStorage = async () => {
+  //   try {
+  //     const storedData = await AsyncStorage.getItem("todoData");
+  //     if (storedData) {
+  //       const parsedData = JSON.parse(storedData);
+  //       parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
+  //     }
+  //   } catch (error) {
+  //     console.error("Помилка завантаження folder:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (data.length >= 0) {
+  //     loadTasksFromStorage();
+  //   }
+  // }, []);
 
   const handleChangeFolderName = useCallback(
     (item, newName) => {
