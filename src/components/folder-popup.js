@@ -62,6 +62,12 @@ const FolderPopup = ({
             p={2}
             rounded={50}
             bg={useColorModeValue("black.default", "pink.default")}
+            _pressed={{
+              bg: useColorModeValue(
+                "black.defaultOpacity",
+                "pink.defaultOpacity"
+              ),
+            }}
           >
             <Icon
               color={useColorModeValue("pink.default", "black.default")}

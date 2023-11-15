@@ -113,7 +113,7 @@ export default function TaskList({
   };
 
   useEffect(() => {
-    if (data.folders.length >= 0 && data.folders.length <= 1) {
+    if (data.folders.length === 0) {
       loadTasksFromStorage();
     }
   }, []);
