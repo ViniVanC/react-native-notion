@@ -25,7 +25,7 @@ const FolderPopup = ({
 
   return (
     <Modal isOpen={modalVisible} onClose={closeModal} size={"md"}>
-      <Modal.Content bg={useColorModeValue("black.default", "pink.default")}>
+      <Modal.Content bg={useColorModeValue("pink.default", "black.default")}>
         <Modal.CloseButton
           bg={useColorModeValue("black.default", "pink.default")}
           rounded={100}
@@ -64,7 +64,7 @@ const FolderPopup = ({
             bg={useColorModeValue("black.default", "pink.default")}
           >
             <Icon
-              color={useColorModeValue("black.default", "pink.default")}
+              color={useColorModeValue("pink.default", "black.default")}
               as={<Feather name="check" />}
               size="sm"
             />
