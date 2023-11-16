@@ -82,8 +82,6 @@ const ReminderModal = ({ reminderModal, closeReminderModal, subject }) => {
   };
 
   const scheduleReminder = async () => {
-    console.log(1);
-
     if (!selectedDate) {
       alert("Please select a date and time for the reminder.");
       return;
