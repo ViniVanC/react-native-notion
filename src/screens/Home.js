@@ -112,7 +112,6 @@ export function Home() {
               </HStack>
             </Card>
           </HStack> */}
-
           <Card title="Tasks">
             <Box maxH={200}>
               <TaskList currentFolder={"all"} />

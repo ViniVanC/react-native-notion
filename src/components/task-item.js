@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Pressable,
   Box,
@@ -11,6 +11,8 @@ import AnimatedCheckbox from "./animated-checkbox";
 import AnimatedTaskLabel from "./animated-task-label";
 import SwipeView from "./swipable-view";
 import { Feather } from "@expo/vector-icons";
+import ToggleMenu from "./toggle-menu";
+import ReminderModal from "./reminder-modal";
 
 const TaskItem = ({
   isEditing,
@@ -24,6 +26,9 @@ const TaskItem = ({
   simultaneousHandlers,
   handleOpenModal,
 }) => {
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [reminderModal, setReminderModal] = useState(false);
+
   const highlightColor = useToken(
     "colors",
     useColorModeValue("pink.default", "black.default")
@@ -54,6 +59,19 @@ const TaskItem = ({
     [onChangeSubject]
   );
 
+  const openToggleMenu = useCallback(() => {
+    setToggleMenu(true);
+  });
+  const closeToggleMenu = useCallback(() => {
+    setToggleMenu(false);
+  });
+  const openReminderModal = useCallback(() => {
+    setReminderModal(true);
+  });
+  const closeReminderModal = useCallback(() => {
+    setReminderModal(false);
+  });
+
   return (
     <SwipeView
       simultaneousHandlers={simultaneousHandlers}
@@ -80,8 +98,19 @@ const TaskItem = ({
         mt={2}
         rounded={10}
         bg={useColorModeValue("black.default", "pink.default")}
-        onLongPress={handleOpenModal}
+        onLongPress={openToggleMenu}
       >
+        <ToggleMenu
+          toggleMenu={toggleMenu}
+          closeToggleMenu={closeToggleMenu}
+          handleOpenModal={handleOpenModal}
+          handleReminderModal={openReminderModal}
+        />
+        <ReminderModal
+          subject={subject}
+          reminderModal={reminderModal}
+          closeReminderModal={closeReminderModal}
+        />
         <Box width={30} height={30} mr={2}>
           <Pressable onPress={onToggleCheckbox}>
             <AnimatedCheckbox

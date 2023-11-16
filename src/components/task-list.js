@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, View } from "moti";
 import { ScrollView } from "react-native-gesture-handler";
 import TaskItem from "./task-item";
@@ -95,7 +95,6 @@ export default function TaskList({
   openModal,
 }) {
   const refScrollView = useRef(null);
-
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
 

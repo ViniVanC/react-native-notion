@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon, VStack, useColorModeValue, Fab } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import AnimatedColorBox from "../components/animated-color-box";
@@ -82,6 +82,7 @@ export function ToDo() {
               subject: "",
               done: false,
               folders: ["all"],
+              reminder: { date: "", time: "" },
             })
           );
           setEditingItemId(id);
