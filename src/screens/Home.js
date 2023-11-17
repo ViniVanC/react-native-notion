@@ -18,14 +18,17 @@ import TaskList from "../components/task-list";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import NameModal from "../components/name-modal";
-import { addUserName } from "../redux/actions/todoActions";
+import {
+  addTask,
+  addUserName,
+  createFolder,
+} from "../redux/actions/todoActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Home() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const dataTasks = useSelector((state) => state.tasks);
-  const userName = useSelector((state) => state.userName);
+  const data = useSelector((state) => state);
   const [nameModal, setNameModal] = useState(false);
   const [editingItemId, setEditingItemId] = useState(null);
   const [currentFolder, setCurrentFolder] = useState("all");
@@ -35,18 +38,21 @@ export function Home() {
       const storedData = await AsyncStorage.getItem("todoData");
       if (storedData) {
         const parsedData = JSON.parse(storedData);
+        console.log(2, parsedData);
+        parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
+        parsedData.tasks.forEach((task) => dispatch(addTask(task)));
         dispatch(addUserName(parsedData.userName));
         if (parsedData.userName === "") {
           openNameModal();
         }
       }
     } catch (error) {
-      console.error("Помилка завантаження userName:", error);
+      console.error("Помилка завантаження f&t:", error);
     }
   };
 
   useEffect(() => {
-    if (userName === "") {
+    if (data.folders.length === 0) {
       loadTasksFromStorage();
     }
   }, []);
@@ -80,7 +86,7 @@ export function Home() {
                 fontSize={"4xl"}
                 onPress={openNameModal}
               >
-                {userName !== "" ? ", " + userName : ""}
+                {data.userName !== "" ? ", " + data.userName : ""}
               </Text>
               !
             </Text>
@@ -186,7 +192,7 @@ export function Home() {
           </HStack> */}
           <Card title="Tasks">
             <Box maxH={200}>
-              {dataTasks.length !== 0 ? (
+              {data.tasks.length !== 0 ? (
                 <TaskList
                   currentFolder={currentFolder}
                   editingItemId={editingItemId}

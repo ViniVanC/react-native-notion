@@ -1,16 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { AnimatePresence, View } from "moti";
 import { ScrollView } from "react-native-gesture-handler";
 import TaskItem from "./task-item";
 import { makeStyledComponent } from "../utils/styled";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  editTask,
-  deleteTask,
-  addTask,
-  createFolder,
-} from "../redux/actions/todoActions";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { editTask, deleteTask } from "../redux/actions/todoActions";
 import Folder from "./folder";
 
 const StyledView = makeStyledComponent(View);
@@ -102,25 +96,6 @@ export default function TaskList({
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   const [taskItemId, setTaskItemId] = useState(null);
-
-  const loadTasksFromStorage = async () => {
-    try {
-      const storedData = await AsyncStorage.getItem("todoData");
-      if (storedData) {
-        const parsedData = JSON.parse(storedData);
-        parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
-        parsedData.tasks.forEach((task) => dispatch(addTask(task)));
-      }
-    } catch (error) {
-      console.error("Помилка завантаження f&t:", error);
-    }
-  };
-
-  useEffect(() => {
-    if (data.folders.length === 0) {
-      loadTasksFromStorage();
-    }
-  }, []);
 
   const handleToggleTaskItem = useCallback(
     (item) => {
