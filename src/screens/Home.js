@@ -15,8 +15,12 @@ import Card from "../components/card";
 import { Masthead } from "../components/masthead";
 import AnimatedColorBox from "../components/animated-color-box";
 import TaskList from "../components/task-list";
+import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 export function Home() {
+  const dataTasks = useSelector((state) => state.tasks);
+  const navigation = useNavigation();
   const [editingItemId, setEditingItemId] = useState(null);
   const [currentFolder, setCurrentFolder] = useState("all");
 
@@ -117,12 +121,37 @@ export function Home() {
           </HStack> */}
           <Card title="Tasks">
             <Box maxH={200}>
-              <TaskList
-                currentFolder={currentFolder}
-                editingItemId={editingItemId}
-                setEditingItemId={setEditingItemId}
-                setCurrentFolder={setCurrentFolder}
-              />
+              {dataTasks.length !== 0 ? (
+                <TaskList
+                  currentFolder={currentFolder}
+                  editingItemId={editingItemId}
+                  setEditingItemId={setEditingItemId}
+                  setCurrentFolder={setCurrentFolder}
+                />
+              ) : (
+                <Pressable
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  rounded={10}
+                  p={2}
+                  mt={3}
+                  bg={useColorModeValue("black.default", "pink.default")}
+                  _pressed={{
+                    bg: useColorModeValue(
+                      "black.defaultOpacity",
+                      "pink.defaultOpacity"
+                    ),
+                  }}
+                  onPress={() => navigation.navigate("Tasks")}
+                >
+                  <Icon
+                    as={Feather}
+                    name={"plus"}
+                    size="md"
+                    color={useColorModeValue("pink.default", "black.default")}
+                  />
+                </Pressable>
+              )}
             </Box>
           </Card>
           {/* <Card title="Notes" dark={true}>
