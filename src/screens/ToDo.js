@@ -6,10 +6,10 @@ import TaskList from "../components/task-list";
 import shortid from "shortid";
 import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTask } from "../redux/actions/todoActions";
 
-export function ToDo() {
+export function ToDo({}) {
   const dispatch = useDispatch();
   const [editingItemId, setEditingItemId] = useState(null);
   const [currentFolder, setCurrentFolder] = useState("all");

@@ -14,6 +14,7 @@ const Folder = ({
   closeModal,
   taskItemId,
 }) => {
+  
   const dispatch = useDispatch();
   const [editingItemId, setEditingItemId] = useState(null);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useColorModeValue, Pressables } from "native-base";
+import { useColorModeValue, Pressable } from "native-base";
 
 const ToggleMenuItem = ({ children, onPress }) => {
   return (

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   HStack,
@@ -17,6 +17,9 @@ import AnimatedColorBox from "../components/animated-color-box";
 import TaskList from "../components/task-list";
 
 export function Home() {
+  const [editingItemId, setEditingItemId] = useState(null);
+  const [currentFolder, setCurrentFolder] = useState("all");
+
   return (
     <AnimatedColorBox
       flex={1}
@@ -114,7 +117,12 @@ export function Home() {
           </HStack> */}
           <Card title="Tasks">
             <Box maxH={200}>
-              <TaskList currentFolder={"all"} />
+              <TaskList
+                currentFolder={currentFolder}
+                editingItemId={editingItemId}
+                setEditingItemId={setEditingItemId}
+                setCurrentFolder={setCurrentFolder}
+              />
             </Box>
           </Card>
           {/* <Card title="Notes" dark={true}>
