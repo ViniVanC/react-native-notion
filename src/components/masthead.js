@@ -1,4 +1,4 @@
-import { Box, HStack, Text, useColorModeValue, useToken } from "native-base";
+import { HStack, Text, useColorModeValue, useToken } from "native-base";
 import React from "react";
 import { Circle, Path, Rect, Svg } from "react-native-svg";
 
@@ -51,14 +51,7 @@ export const Masthead = ({ title, children }) => {
         </Svg>
       </HStack>
       {children}
-      <Text
-        color={useColorModeValue("black.default", "pink.default")}
-        px={3}
-        fontSize={"4xl"}
-        bold
-      >
-        {title}
-      </Text>
+      <HStack px={3}>{title}</HStack>
     </HStack>
   );
 };

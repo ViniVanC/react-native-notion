@@ -40,3 +40,8 @@ export const reminderTask = (taskId, reminderData) => ({
     reminder: reminderData,
   },
 });
+
+export const addUserName = (name) => ({
+  type: "ADD_USER_NAME",
+  payload: name,
+});

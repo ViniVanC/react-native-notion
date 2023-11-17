@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Icon, VStack, useColorModeValue, Fab } from "native-base";
+import { Icon, VStack, useColorModeValue, Fab, Text } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import AnimatedColorBox from "../components/animated-color-box";
 import TaskList from "../components/task-list";
@@ -20,7 +20,17 @@ export function ToDo({}) {
       bg={useColorModeValue("pink.default", "black.default")}
       w="full"
     >
-      <Masthead title={"ToDo"}>
+      <Masthead
+        title={
+          <Text
+            color={useColorModeValue("black.default", "pink.default")}
+            fontSize={"4xl"}
+            fontWeight={"bold"}
+          >
+            ToDo
+          </Text>
+        }
+      >
         <NavBar />
       </Masthead>
 

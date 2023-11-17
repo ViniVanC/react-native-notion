@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
   HStack,
@@ -15,14 +15,48 @@ import Card from "../components/card";
 import { Masthead } from "../components/masthead";
 import AnimatedColorBox from "../components/animated-color-box";
 import TaskList from "../components/task-list";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import NameModal from "../components/name-modal";
+import { addUserName } from "../redux/actions/todoActions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Home() {
-  const dataTasks = useSelector((state) => state.tasks);
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+  const dataTasks = useSelector((state) => state.tasks);
+  const userName = useSelector((state) => state.userName);
+  const [nameModal, setNameModal] = useState(false);
   const [editingItemId, setEditingItemId] = useState(null);
   const [currentFolder, setCurrentFolder] = useState("all");
+
+  const loadTasksFromStorage = async () => {
+    try {
+      const storedData = await AsyncStorage.getItem("todoData");
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        dispatch(addUserName(parsedData.userName));
+        if (parsedData.userName === "") {
+          openNameModal();
+        }
+      }
+    } catch (error) {
+      console.error("Помилка завантаження userName:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (userName === "") {
+      loadTasksFromStorage();
+    }
+  }, []);
+
+  const openNameModal = () => {
+    setNameModal(true);
+  };
+  const closeNameModal = () => {
+    setNameModal(false);
+  };
 
   return (
     <AnimatedColorBox
@@ -30,7 +64,38 @@ export function Home() {
       bg={useColorModeValue("pink.default", "black.default")}
       w="full"
     >
-      <Masthead title={"hi!"}>
+      <NameModal nameModal={nameModal} closeNameModal={closeNameModal} />
+      <Masthead
+        title={
+          <>
+            <Text
+              color={useColorModeValue("black.default", "pink.default")}
+              fontSize={"4xl"}
+              fontWeight={"bold"}
+            >
+              hi
+              <Text
+                color={useColorModeValue("black.default", "pink.default")}
+                px={3}
+                fontSize={"4xl"}
+                onPress={openNameModal}
+              >
+                {userName !== "" ? ", " + userName : ""}
+              </Text>
+              !
+            </Text>
+            <Icon
+              color={useColorModeValue("black.default", "pink.default")}
+              as={<Feather name="edit" />}
+              mt={2}
+              ml={1}
+              opacity={0.7}
+              size={"15px"}
+              onPress={openNameModal}
+            />
+          </>
+        }
+      >
         <NavBar />
       </Masthead>
 

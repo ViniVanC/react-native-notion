@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const initialState = {
   tasks: [],
   folders: [],
+  userName: "",
 };
 
 const saveDataToStorage = async (data) => {
@@ -29,6 +30,7 @@ const todoReducer = (state = initialState, action) => {
         const modifiedFoldersWithAll = [newAllFolder, ...state.folders];
 
         saveDataToStorage({
+          userName: state.userName,
           tasks: updatedTasks,
           folders: modifiedFoldersWithAll,
         });
@@ -48,7 +50,11 @@ const todoReducer = (state = initialState, action) => {
         index === allFolderIndex ? updatedAllFolder : folder
       );
 
-      saveDataToStorage({ tasks: updatedTasks, folders: modifiedFolders });
+      saveDataToStorage({
+        userName: state.userName,
+        tasks: updatedTasks,
+        folders: modifiedFolders,
+      });
 
       return { ...state, tasks: updatedTasks, folders: modifiedFolders };
 
@@ -56,7 +62,11 @@ const todoReducer = (state = initialState, action) => {
       const editedTasks = state.tasks.map((task) =>
         task.id === action.payload.id ? action.payload : task
       );
-      saveDataToStorage({ tasks: editedTasks, folders: state.folders });
+      saveDataToStorage({
+        userName: state.userName,
+        tasks: editedTasks,
+        folders: state.folders,
+      });
       return {
         ...state,
         tasks: editedTasks,
@@ -69,7 +79,11 @@ const todoReducer = (state = initialState, action) => {
           : task
       );
 
-      saveDataToStorage({ tasks: reminderTasks, folders: state.folders });
+      saveDataToStorage({
+        userName: state.userName,
+        tasks: reminderTasks,
+        folders: state.folders,
+      });
 
       return {
         ...state,
@@ -94,6 +108,7 @@ const todoReducer = (state = initialState, action) => {
       );
 
       saveDataToStorage({
+        userName: state.userName,
         tasks: filteredTasks,
         folders: removeModifiedFolders,
       });
@@ -106,7 +121,11 @@ const todoReducer = (state = initialState, action) => {
 
     case "CREATE_FOLDER":
       const newFolder = [...state.folders, action.payload];
-      saveDataToStorage({ tasks: state.tasks, folders: newFolder });
+      saveDataToStorage({
+        userName: state.userName,
+        tasks: state.tasks,
+        folders: newFolder,
+      });
       return {
         ...state,
         folders: newFolder,
@@ -116,7 +135,11 @@ const todoReducer = (state = initialState, action) => {
       const editedFolders = state.folders.map((folder) =>
         folder.id === action.payload.id ? action.payload : folder
       );
-      saveDataToStorage({ tasks: state.tasks, folders: editedFolders });
+      saveDataToStorage({
+        userName: state.userName,
+        tasks: state.tasks,
+        folders: editedFolders,
+      });
       return {
         ...state,
         folders: editedFolders,
@@ -138,11 +161,12 @@ const todoReducer = (state = initialState, action) => {
         return task;
       });
 
-      saveDataToStorage({ tasks: updatedTask, folders: updatedFolders });
-      return {
+      saveDataToStorage({
+        userName: state.userName,
         tasks: updatedTask,
         folders: updatedFolders,
-      };
+      });
+      return { ...state, tasks: updatedTask, folders: updatedFolders };
 
     case "DELETE_FOLDER":
       const folderToDelete = action.payload;
@@ -151,12 +175,28 @@ const todoReducer = (state = initialState, action) => {
           (folder) => folder.id !== folderToDelete
         );
 
-        saveDataToStorage({ folders: filteredFolders, tasks: state.tasks });
+        saveDataToStorage({
+          userName: state.userName,
+          folders: filteredFolders,
+          tasks: state.tasks,
+        });
         return {
           ...state,
           folders: filteredFolders,
         };
       }
+
+    case "ADD_USER_NAME":
+      const newUserName = action.payload;
+      saveDataToStorage({
+        tasks: state.tasks,
+        folders: state.folders,
+        userName: newUserName,
+      });
+      return {
+        ...state,
+        userName: newUserName,
+      };
     default:
       return state;
   }
