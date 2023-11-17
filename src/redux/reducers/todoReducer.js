@@ -63,17 +63,14 @@ const todoReducer = (state = initialState, action) => {
       };
 
     case "REMINDER_TASK":
-      // Створюємо новий масив завдань, змінюючи reminder конкретного завдання за його id.
       const reminderTasks = state.tasks.map((task) =>
         task.id === action.payload.id
           ? { ...task, reminder: action.payload.reminder }
           : task
       );
 
-      // Зберігаємо оновлений стан у локальне сховище або в інше місце, яке ви використовуєте для зберігання стану.
       saveDataToStorage({ tasks: reminderTasks, folders: state.folders });
 
-      // Повертаємо новий стан Redux, оновивши поле tasks.
       return {
         ...state,
         tasks: reminderTasks,

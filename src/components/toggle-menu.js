@@ -37,16 +37,16 @@ const ToggleMenu = ({
         </Modal.Header>
         <Modal.Body>
           <VStack rounded={5} px={1.5} space={1.5}>
-            {reminder && (
+            {typeof reminder !== "string" && (
               <HStack space={1.5}>
                 <Text
-                  color={useColorModeValue("blac.default", "pink.default")}
+                  color={useColorModeValue("black.default", "pink.default")}
                   fontSize={16}
                 >
                   Reminder:
                 </Text>
                 <Text
-                  color={useColorModeValue("blac.default", "pink.default")}
+                  color={useColorModeValue("black.default", "pink.default")}
                   fontSize={16}
                   fontWeight={"bold"}
                 >
@@ -56,7 +56,7 @@ const ToggleMenu = ({
                   })}
                 </Text>
                 <Text
-                  color={useColorModeValue("blac.default", "pink.default")}
+                  color={useColorModeValue("black.default", "pink.default")}
                   fontSize={16}
                   opacity={0.7}
                 >

@@ -102,9 +102,6 @@ const TaskItem = ({
         rounded={10}
         bg={useColorModeValue("black.default", "pink.default")}
         onLongPress={openToggleMenu}
-        _pressed={{
-          bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
-        }}
       >
         <ToggleMenu
           reminder={reminder}

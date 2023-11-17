@@ -100,8 +100,6 @@ export default function TaskList({
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  console.log(data.tasks);
-
   const loadTasksFromStorage = async () => {
     try {
       const storedData = await AsyncStorage.getItem("todoData");
