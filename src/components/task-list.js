@@ -11,6 +11,7 @@ import {
   createFolder,
 } from "../redux/actions/todoActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Folder from "./folder";
 
 const StyledView = makeStyledComponent(View);
 const StyledScrollView = makeStyledComponent(ScrollView);
@@ -94,11 +95,13 @@ export default function TaskList({
   editingItemId,
   setEditingItemId,
   currentFolder,
-  openModal,
+  setCurrentFolder,
 }) {
   const refScrollView = useRef(null);
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [taskItemId, setTaskItemId] = useState(null);
 
   const loadTasksFromStorage = async () => {
     try {
@@ -150,26 +153,46 @@ export default function TaskList({
     [dispatch]
   );
 
+  const openModal = (id) => {
+    setTaskItemId(id);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
-    <StyledScrollView ref={refScrollView} w="full">
-      <AnimatePresence>
-        {data.tasks
-          .filter((item) => item.folders.includes(currentFolder))
-          .map((item) => (
-            <AnimatedTaskItem
-              key={item.id}
-              data={item}
-              simultaneousHandlers={refScrollView}
-              isEditing={item.id === editingItemId}
-              onToggleItem={handleToggleTaskItem}
-              onChangeSubject={handleChangeTaskItemSubject}
-              onFinishEditing={handleFinishEditingTaskItem}
-              onPressLabel={handlePressTaskItemLabel}
-              onRemove={handleRemoveItem}
-              openModal={openModal}
-            />
-          ))}
-      </AnimatePresence>
-    </StyledScrollView>
+    <>
+      {data.folders.length !== 0 && (
+        <Folder
+          currentFolder={currentFolder}
+          setCurrentFolder={setCurrentFolder}
+          modalVisible={modalVisible}
+          closeModal={closeModal}
+          taskItemId={taskItemId}
+        />
+      )}
+      <StyledScrollView ref={refScrollView} w="full">
+        <AnimatePresence>
+          {data.tasks
+            .filter((item) => item.folders.includes(currentFolder))
+            .map((item) => (
+              <AnimatedTaskItem
+                key={item.id}
+                data={item}
+                simultaneousHandlers={refScrollView}
+                isEditing={item.id === editingItemId}
+                onToggleItem={handleToggleTaskItem}
+                onChangeSubject={handleChangeTaskItemSubject}
+                onFinishEditing={handleFinishEditingTaskItem}
+                onPressLabel={handlePressTaskItemLabel}
+                onRemove={handleRemoveItem}
+                openModal={openModal}
+              />
+            ))}
+        </AnimatePresence>
+      </StyledScrollView>
+    </>
   );
 }

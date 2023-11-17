@@ -29,6 +29,7 @@ const TaskItem = ({
   simultaneousHandlers,
   handleOpenModal,
 }) => {
+
   const [toggleMenu, setToggleMenu] = useState(false);
   const [reminderModal, setReminderModal] = useState(false);
 

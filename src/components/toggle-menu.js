@@ -6,7 +6,11 @@ import {
   Text,
   VStack,
   HStack,
+  Icon,
+  ScrollView,
 } from "native-base";
+import ToggleMenuItem from "./toggle-menu-item";
+import { Feather } from "@expo/vector-icons";
 
 const ToggleMenu = ({
   reminder,
@@ -15,106 +19,55 @@ const ToggleMenu = ({
   handleOpenModal,
   handleReminderModal,
 }) => {
+  const reminderDateTime = new Date(reminder);
+
   return (
-    <Modal isOpen={toggleMenu} onClose={closeToggleMenu} size={"md"}>
+    <Modal isOpen={toggleMenu} onClose={closeToggleMenu} size="xs">
       <Modal.Content bg={useColorModeValue("pink.default", "black.default")}>
-        <Modal.CloseButton
-          bg={useColorModeValue("black.default", "pink.default")}
-          rounded={100}
-          _icon={{
-            color: useColorModeValue("pink.default", "black.default"),
-          }}
-        />
-        <Modal.Header
-          bg={useColorModeValue("pink.default", "black.default")}
-          borderBottomWidth={0}
-          _text={{
-            color: useColorModeValue("black.default", "pink.default"),
-            fontWeight: "bold",
-          }}
-        >
-          Options
-        </Modal.Header>
         <Modal.Body>
-          <VStack rounded={5} px={1.5} space={1.5}>
-            {typeof reminder !== "string" && (
-              <HStack space={1.5}>
-                <Text
-                  color={useColorModeValue("black.default", "pink.default")}
-                  fontSize={16}
-                >
-                  Reminder:
-                </Text>
-                <Text
-                  color={useColorModeValue("black.default", "pink.default")}
-                  fontSize={16}
-                  fontWeight={"bold"}
-                >
-                  {reminder.toLocaleTimeString("uk-UA", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
-                </Text>
-                <Text
-                  color={useColorModeValue("black.default", "pink.default")}
-                  fontSize={16}
-                  opacity={0.7}
-                >
-                  {reminder.toLocaleString([], {
-                    year: "numeric",
-                    month: "numeric",
-                    day: "numeric",
-                  })}
-                </Text>
-              </HStack>
-            )}
-            <Pressable
-              bg={useColorModeValue("black.default", "pink.default")}
-              _pressed={{
-                bg: useColorModeValue(
-                  "black.defaultOpacity",
-                  "pink.defaultOpacity"
-                ),
-              }}
-              flex={1}
-              flexDirection="row"
-              py={1.5}
-              px={2}
-              rounded={5}
-              onPress={handleOpenModal}
-            >
+          <ScrollView horizontal>
+            <HStack space={3} justifyContent={"center"}>
+              <ToggleMenuItem onPress={handleOpenModal}>
+                <Icon
+                  color={useColorModeValue("pink.default", "black.default")}
+                  as={<Feather name="folder-plus" />}
+                  size="lg"
+                />
+              </ToggleMenuItem>
+              <ToggleMenuItem onPress={handleReminderModal}>
+                <Icon
+                  color={useColorModeValue("pink.default", "black.default")}
+                  as={<Feather name="clock" />}
+                  size="lg"
+                />
+              </ToggleMenuItem>
+            </HStack>
+          </ScrollView>
+          {reminder !== "" && (
+            <HStack space={1.5} mt={3} justifyContent={"center"}>
               <Text
-                fontSize={"lg"}
+                color={useColorModeValue("black.default", "pink.default")}
+                fontSize={16}
                 fontWeight={"bold"}
-                color={useColorModeValue("pink.default", "black.default")}
               >
-                Add to folder
+                {reminderDateTime.toLocaleTimeString("uk-UA", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </Text>
-            </Pressable>
-            <Pressable
-              bg={useColorModeValue("black.default", "pink.default")}
-              _pressed={{
-                bg: useColorModeValue(
-                  "black.defaultOpacity",
-                  "pink.defaultOpacity"
-                ),
-              }}
-              flex={1}
-              flexDirection="row"
-              py={1.5}
-              px={2}
-              rounded={5}
-              onPress={handleReminderModal}
-            >
               <Text
-                fontSize={"lg"}
-                fontWeight={"bold"}
-                color={useColorModeValue("pink.default", "black.default")}
+                color={useColorModeValue("black.default", "pink.default")}
+                fontSize={16}
+                opacity={0.7}
               >
-                Schedule a reminder
+                {reminderDateTime.toLocaleString([], {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                })}
               </Text>
-            </Pressable>
-          </VStack>
+            </HStack>
+          )}
         </Modal.Body>
       </Modal.Content>
     </Modal>

@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import FolderList from "./folder-list";
 import { createFolder } from "../redux/actions/todoActions";
-import { Box, HStack, Icon, Pressable, useColorModeValue } from "native-base";
+import { HStack, Icon, Pressable, useColorModeValue } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import shortid from "shortid";
 import FolderPopup from "./folder-popup";
@@ -18,7 +18,7 @@ const Folder = ({
   const [editingItemId, setEditingItemId] = useState(null);
 
   return (
-    <HStack px={"20px"}>
+    <HStack mt={3}>
       <FolderPopup
         editingItemId={editingItemId}
         setEditingItemId={setEditingItemId}
