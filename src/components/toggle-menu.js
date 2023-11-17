@@ -1,7 +1,15 @@
 import React from "react";
-import { Modal, useColorModeValue, Pressable, Text, VStack } from "native-base";
+import {
+  Modal,
+  useColorModeValue,
+  Pressable,
+  Text,
+  VStack,
+  HStack,
+} from "native-base";
 
 const ToggleMenu = ({
+  reminder,
   toggleMenu,
   closeToggleMenu,
   handleOpenModal,
@@ -29,6 +37,37 @@ const ToggleMenu = ({
         </Modal.Header>
         <Modal.Body>
           <VStack rounded={5} px={1.5} space={1.5}>
+            {reminder && (
+              <HStack space={1.5}>
+                <Text
+                  color={useColorModeValue("blac.default", "pink.default")}
+                  fontSize={16}
+                >
+                  Reminder:
+                </Text>
+                <Text
+                  color={useColorModeValue("blac.default", "pink.default")}
+                  fontSize={16}
+                  fontWeight={"bold"}
+                >
+                  {reminder.toLocaleTimeString("uk-UA", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </Text>
+                <Text
+                  color={useColorModeValue("blac.default", "pink.default")}
+                  fontSize={16}
+                  opacity={0.7}
+                >
+                  {reminder.toLocaleString([], {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                  })}
+                </Text>
+              </HStack>
+            )}
             <Pressable
               bg={useColorModeValue("black.default", "pink.default")}
               _pressed={{

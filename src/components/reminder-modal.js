@@ -11,6 +11,8 @@ import {
 import { Feather } from "@expo/vector-icons";
 import Reminder from "../components/reminder";
 import * as Notifications from "expo-notifications";
+import { useDispatch } from "react-redux";
+import { reminderTask } from "../redux/actions/todoActions";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,7 +22,8 @@ Notifications.setNotificationHandler({
   }),
 });
 
-const ReminderModal = ({ reminderModal, closeReminderModal, subject }) => {
+const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
+  const dispatch = useDispatch();
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -94,6 +97,8 @@ const ReminderModal = ({ reminderModal, closeReminderModal, subject }) => {
       },
       trigger: { date: selectedDate },
     });
+
+    dispatch(reminderTask(id, selectedDate));
 
     setSelectedDate(new Date());
   };

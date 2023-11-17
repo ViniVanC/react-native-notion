@@ -82,7 +82,7 @@ export function ToDo() {
               subject: "",
               done: false,
               folders: ["all"],
-              reminder: { date: "", time: "" },
+              reminder: "",
             })
           );
           setEditingItemId(id);

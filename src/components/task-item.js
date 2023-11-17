@@ -6,6 +6,7 @@ import {
   Icon,
   Input,
   useToken,
+  Text,
 } from "native-base";
 import AnimatedCheckbox from "./animated-checkbox";
 import AnimatedTaskLabel from "./animated-task-label";
@@ -15,6 +16,8 @@ import ToggleMenu from "./toggle-menu";
 import ReminderModal from "./reminder-modal";
 
 const TaskItem = ({
+  id,
+  reminder,
   isEditing,
   isDone,
   onToggleCheckbox,
@@ -99,14 +102,19 @@ const TaskItem = ({
         rounded={10}
         bg={useColorModeValue("black.default", "pink.default")}
         onLongPress={openToggleMenu}
+        _pressed={{
+          bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
+        }}
       >
         <ToggleMenu
+          reminder={reminder}
           toggleMenu={toggleMenu}
           closeToggleMenu={closeToggleMenu}
           handleOpenModal={handleOpenModal}
           handleReminderModal={openReminderModal}
         />
         <ReminderModal
+          id={id}
           subject={subject}
           reminderModal={reminderModal}
           closeReminderModal={closeReminderModal}
@@ -137,6 +145,18 @@ const TaskItem = ({
           />
         ) : (
           <>
+            {reminder && (
+              <Box
+                position={"absolute"}
+                top={"13px"}
+                left={"45px"}
+                h={"10px"}
+                w={"10px"}
+                rounded={50}
+                opacity={0.5}
+                bg={"red"}
+              />
+            )}
             <AnimatedTaskLabel
               textColor={activeTextColor}
               inactiveTextColor={doneTextColor}

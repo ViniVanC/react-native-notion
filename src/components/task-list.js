@@ -74,6 +74,8 @@ export const AnimatedTaskItem = ({
     >
       <TaskItem
         simultaneousHandlers={simultaneousHandlers}
+        id={data.id}
+        reminder={data.reminder}
         subject={data.subject}
         isDone={data.done}
         isEditing={isEditing}
@@ -97,6 +99,8 @@ export default function TaskList({
   const refScrollView = useRef(null);
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  console.log(data.tasks);
 
   const loadTasksFromStorage = async () => {
     try {

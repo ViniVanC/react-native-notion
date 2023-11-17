@@ -32,3 +32,11 @@ export const deleteFolder = (folderId) => ({
   type: "DELETE_FOLDER",
   payload: folderId,
 });
+
+export const reminderTask = (taskId, reminderData) => ({
+  type: "REMINDER_TASK",
+  payload: {
+    id: taskId,
+    reminder: reminderData,
+  },
+});
