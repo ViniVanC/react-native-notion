@@ -35,7 +35,7 @@ export function Home() {
 
   const loadTasksFromStorage = async () => {
     try {
-      const storedData = await AsyncStorage.getItem("todoData");
+      const storedData = await AsyncStorage.getItem("appData");
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));

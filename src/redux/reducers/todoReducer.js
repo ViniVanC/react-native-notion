@@ -1,4 +1,6 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as taskFunctions from "../../utils/task-functions";
+import * as folderFunctions from "../../utils/folder-functions";
+import * as nameFunctions from "../../utils/name-functions";
 
 const initialState = {
   tasks: [],
@@ -6,197 +8,26 @@ const initialState = {
   userName: "",
 };
 
-const saveDataToStorage = async (data) => {
-  try {
-    await AsyncStorage.setItem("todoData", JSON.stringify(data));
-  } catch (error) {
-    console.error("Помилка збереження даних:", error);
-  }
-};
-
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TASK":
-      const updatedTasks = [...state.tasks, action.payload];
-      const allFolderIndex = state.folders.findIndex(
-        (folder) => folder.id === "all"
-      );
-      if (allFolderIndex === -1) {
-        const newAllFolder = {
-          id: "all",
-          name: "All",
-          tasks: [action.payload.id],
-        };
-        const modifiedFoldersWithAll = [newAllFolder, ...state.folders];
-
-        saveDataToStorage({
-          userName: state.userName,
-          tasks: updatedTasks,
-          folders: modifiedFoldersWithAll,
-        });
-
-        return {
-          ...state,
-          tasks: updatedTasks,
-          folders: modifiedFoldersWithAll,
-        };
-      }
-
-      const updatedAllFolder = {
-        ...state.folders[allFolderIndex],
-        tasks: [action.payload.id, ...state.folders[allFolderIndex].tasks],
-      };
-      const modifiedFolders = state.folders.map((folder, index) =>
-        index === allFolderIndex ? updatedAllFolder : folder
-      );
-
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: updatedTasks,
-        folders: modifiedFolders,
-      });
-
-      return { ...state, tasks: updatedTasks, folders: modifiedFolders };
-
+      return taskFunctions.addTask(state, action);
     case "EDIT_TASK":
-      const editedTasks = state.tasks.map((task) =>
-        task.id === action.payload.id ? action.payload : task
-      );
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: editedTasks,
-        folders: state.folders,
-      });
-      return {
-        ...state,
-        tasks: editedTasks,
-      };
-
+      return taskFunctions.editTask(state, action);
     case "REMINDER_TASK":
-      const reminderTasks = state.tasks.map((task) =>
-        task.id === action.payload.id
-          ? { ...task, reminder: action.payload.reminder }
-          : task
-      );
-
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: reminderTasks,
-        folders: state.folders,
-      });
-
-      return {
-        ...state,
-        tasks: reminderTasks,
-      };
-
+      return taskFunctions.reminderTask(state, action);
     case "DELETE_TASK":
-      const taskIdToDelete = action.payload;
-
-      const removeModifiedFolders = state.folders.map((folder) => {
-        if (folder.id === "all") {
-          return {
-            ...folder,
-            tasks: folder.tasks.filter((taskId) => taskId !== taskIdToDelete),
-          };
-        }
-        return folder;
-      });
-
-      const filteredTasks = state.tasks.filter(
-        (task) => task.id !== taskIdToDelete
-      );
-
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: filteredTasks,
-        folders: removeModifiedFolders,
-      });
-
-      return {
-        ...state,
-        tasks: filteredTasks,
-        folders: removeModifiedFolders,
-      };
-
+      return taskFunctions.deleteTask(state, action);
     case "CREATE_FOLDER":
-      const newFolder = [...state.folders, action.payload];
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: state.tasks,
-        folders: newFolder,
-      });
-      return {
-        ...state,
-        folders: newFolder,
-      };
-
+      return folderFunctions.createFolder(state, action);
     case "EDIT_FOLDER":
-      const editedFolders = state.folders.map((folder) =>
-        folder.id === action.payload.id ? action.payload : folder
-      );
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: state.tasks,
-        folders: editedFolders,
-      });
-      return {
-        ...state,
-        folders: editedFolders,
-      };
-
+      return folderFunctions.editFolder(state, action);
     case "ADD_TASK_TO_FOLDER":
-      const { taskId, folderId } = action.payload;
-      const updatedFolders = state.folders.map((folder) => {
-        if (folder.id === folderId) {
-          return { ...folder, tasks: [...folder.tasks, taskId] };
-        }
-        return folder;
-      });
-
-      const updatedTask = state.tasks.map((task) => {
-        if (task.id === taskId) {
-          return { ...task, folders: [...task.folders, folderId] };
-        }
-        return task;
-      });
-
-      saveDataToStorage({
-        userName: state.userName,
-        tasks: updatedTask,
-        folders: updatedFolders,
-      });
-      return { ...state, tasks: updatedTask, folders: updatedFolders };
-
+      return folderFunctions.addTaskToFolder(state, action);
     case "DELETE_FOLDER":
-      const folderToDelete = action.payload;
-      if (folderToDelete !== "all") {
-        const filteredFolders = state.folders.filter(
-          (folder) => folder.id !== folderToDelete
-        );
-
-        saveDataToStorage({
-          userName: state.userName,
-          folders: filteredFolders,
-          tasks: state.tasks,
-        });
-        return {
-          ...state,
-          folders: filteredFolders,
-        };
-      }
-
+      return folderFunctions.deleteFolder(state, action);
     case "ADD_USER_NAME":
-      const newUserName = action.payload;
-      saveDataToStorage({
-        tasks: state.tasks,
-        folders: state.folders,
-        userName: newUserName,
-      });
-      return {
-        ...state,
-        userName: newUserName,
-      };
+      return nameFunctions.addUserName(state, action);
     default:
       return state;
   }
