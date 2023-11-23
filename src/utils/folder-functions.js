@@ -83,6 +83,3 @@ export const deleteFolder = (state, action) => {
   }
 };
 
-export const addUserName = (state, action) => {
-  // Your ADD_USER_NAME logic here
-};

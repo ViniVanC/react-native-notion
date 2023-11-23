@@ -53,13 +53,13 @@ const Sidebar = ({ state, navigation }) => {
         >
           Tasks
         </MenuButton>
-        <MenuButton
+        {/* <MenuButton
           active={currentRoute === "Habit"}
           onPress={handlePressMenuHabit}
           icon="calendar-check"
         >
           Habit
-        </MenuButton>
+        </MenuButton> */}
         <MenuButton
           active={currentRoute === "Money"}
           onPress={handlePressMenuMoney}
@@ -67,7 +67,7 @@ const Sidebar = ({ state, navigation }) => {
         >
           Money
         </MenuButton>
-        <MenuButton
+        {/* <MenuButton
           active={currentRoute === "Notes"}
           onPress={handlePressMenuNotes}
           icon="book"
@@ -80,7 +80,7 @@ const Sidebar = ({ state, navigation }) => {
           icon="info"
         >
           About
-        </MenuButton>
+        </MenuButton> */}
       </VStack>
       <Center>
         <ThemeToggle />

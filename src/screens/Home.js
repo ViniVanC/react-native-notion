@@ -22,6 +22,7 @@ import {
   addTask,
   addUserName,
   createFolder,
+  updateExpense,
 } from "../redux/actions/todoActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Purse } from "../components/purse";
@@ -41,6 +42,9 @@ export function Home() {
         const parsedData = JSON.parse(storedData);
         parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
         parsedData.tasks.forEach((task) => dispatch(addTask(task)));
+        parsedData.money.history.forEach((transaction) =>
+          dispatch(updateExpense(transaction.value, transaction.status))
+        );
         dispatch(addUserName(parsedData.userName));
         if (parsedData.userName === "") {
           openNameModal();
@@ -108,7 +112,7 @@ export function Home() {
       <ScrollView vertical contentContainerStyle={{ minHeight: "100px" }}>
         <VStack flex={1} px={6} pb={5} space={3}>
           <HStack space={3}>
-            <Card title="Habit" width="50%">
+            {/* <Card title="Habit" width="50%">
               <HStack
                 p={5}
                 flex={1}
@@ -136,9 +140,13 @@ export function Home() {
                   /5
                 </Box>
               </HStack>
-            </Card>
+            </Card> */}
 
-            <Card title="Money" width="45%" dark={true}>
+            <Card
+              title="Money"
+              // width="45%"
+              dark={true}
+            >
               <Purse card={true} />
             </Card>
           </HStack>
@@ -177,7 +185,7 @@ export function Home() {
               )}
             </Box>
           </Card>
-          <Card title="Notes" dark={true}>
+          {/* <Card title="Notes" dark={true}>
             <VStack maxH={200}>
               <ScrollView
                 vertical
@@ -210,7 +218,7 @@ export function Home() {
                 </VStack>
               </ScrollView>
             </VStack>
-          </Card>
+          </Card> */}
         </VStack>
       </ScrollView>
     </AnimatedColorBox>
