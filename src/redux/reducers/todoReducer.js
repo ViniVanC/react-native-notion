@@ -3,9 +3,16 @@ import * as folderFunctions from "../../utils/folder-functions";
 import * as nameFunctions from "../../utils/name-functions";
 
 const initialState = {
+  userName: "",
   tasks: [],
   folders: [],
-  userName: "",
+  money: {
+    value: 100.55,
+    history: [
+      { id: 1, date: new Date(), value: 10, status: "+" },
+      { id: 2, date: new Date(), value: 10, status: "-" },
+    ],
+  },
 };
 
 const todoReducer = (state = initialState, action) => {

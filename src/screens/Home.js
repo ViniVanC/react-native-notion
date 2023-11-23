@@ -139,26 +139,36 @@ export function Home() {
 
             <Card title="Money" width="45%" dark={true}>
               <HStack
-                p={5}
+                py={5}
                 pb={2}
                 alignItems={"center"}
                 justifyContent={"center"}
               >
                 <Text
-                  fontSize={40}
+                  fontSize={20}
+                  color={useColorModeValue("light.default", "dark.default")}
+                >
+                  $
+                </Text>
+                <Text
+                  fontSize={30}
                   lineHeight={40}
                   fontWeight={"semibold"}
                   color={useColorModeValue("light.default", "dark.default")}
                 >
-                  352
+                  {data.money.value}
                 </Text>
               </HStack>
               <HStack justifyContent={"center"} space={2.5}>
                 <Pressable
                   p={3}
                   rounded={"full"}
+                  bg={"blueGreen"}
                   borderWidth={3}
-                  borderColor={"blueGreen"}
+                  borderColor={useColorModeValue(
+                    "light.default",
+                    "dark.default"
+                  )}
                   _pressed={{
                     opacity: 0.5,
                   }}
@@ -167,14 +177,18 @@ export function Home() {
                     as={Feather}
                     name={"arrow-up"}
                     size="md"
-                    color={"blueGreen"}
+                    color={useColorModeValue("light.default", "dark.default")}
                   />
                 </Pressable>
                 <Pressable
                   p={3}
                   rounded={"full"}
+                  bg={"red"}
                   borderWidth={3}
-                  borderColor={"red"}
+                  borderColor={useColorModeValue(
+                    "light.default",
+                    "dark.default"
+                  )}
                   _pressed={{
                     opacity: 0.5,
                   }}
@@ -183,7 +197,7 @@ export function Home() {
                     as={Feather}
                     name={"arrow-down"}
                     size="md"
-                    color={"red"}
+                    color={useColorModeValue("light.default", "dark.default")}
                   />
                 </Pressable>
               </HStack>

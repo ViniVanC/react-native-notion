@@ -61,10 +61,12 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
               : useColorModeValue("dark.default", "light.default")
           }
           _pressed={{
-            bg: useColorModeValue(
-              "dark.defaultOpacity",
-              "light.defaultOpacity"
-            ),
+            bg: dark
+              ? useColorModeValue("light.defaultOpacity", "dark.defaultOpacity")
+              : useColorModeValue(
+                  "dark.defaultOpacity",
+                  "light.defaultOpacity"
+                ),
           }}
           onPress={() => navigation.navigate(title)}
         >
