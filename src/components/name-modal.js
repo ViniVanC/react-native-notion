@@ -21,19 +21,19 @@ const NameModal = ({ nameModal, closeNameModal }) => {
 
   return (
     <Modal isOpen={nameModal} onClose={closeNameModal} size={"lg"}>
-      <Modal.Content bg={useColorModeValue("pink.default", "black.default")}>
+      <Modal.Content bg={useColorModeValue("light.default", "dark.default")}>
         <Modal.CloseButton
-          bg={useColorModeValue("black.default", "pink.default")}
+          bg={useColorModeValue("dark.default", "light.default")}
           rounded={100}
           _icon={{
-            color: useColorModeValue("pink.default", "black.default"),
+            color: useColorModeValue("light.default", "dark.default"),
           }}
         />
         <Modal.Header
-          bg={useColorModeValue("pink.default", "black.default")}
+          bg={useColorModeValue("light.default", "dark.default")}
           borderBottomWidth={0}
           _text={{
-            color: useColorModeValue("black.default", "pink.default"),
+            color: useColorModeValue("dark.default", "light.default"),
             fontWeight: "bold",
           }}
         >
@@ -46,7 +46,7 @@ const NameModal = ({ nameModal, closeNameModal }) => {
             placeholder="Enter name..."
             value={userName}
             variant="unstyled"
-            color={useColorModeValue("black.default", "pink.default")}
+            color={useColorModeValue("dark.default", "light.default")}
             fontWeight={"bold"}
             fontSize={"lg"}
             p={0}
@@ -59,22 +59,22 @@ const NameModal = ({ nameModal, closeNameModal }) => {
         <Modal.Footer
           borderTopWidth={0}
           py={2}
-          bg={useColorModeValue("pink.default", "black.default")}
+          bg={useColorModeValue("light.default", "dark.default")}
         >
           <Pressable
             onPress={saveUserName}
             p={2}
             rounded={50}
-            bg={useColorModeValue("black.default", "pink.default")}
+            bg={useColorModeValue("dark.default", "light.default")}
             _pressed={{
               bg: useColorModeValue(
-                "black.defaultOpacity",
-                "pink.defaultOpacity"
+                "dark.defaultOpacity",
+                "light.defaultOpacity"
               ),
             }}
           >
             <Icon
-              color={useColorModeValue("pink.default", "black.default")}
+              color={useColorModeValue("light.default", "dark.default")}
               as={<Feather name="check" />}
               size="sm"
             />

@@ -23,7 +23,7 @@ const Sidebar = ({ state, navigation }) => {
     <AnimatedColorBox
       safeArea
       flex={1}
-      bg={useColorModeValue("pink.default", "black.default")}
+      bg={useColorModeValue("light.default", "dark.default")}
       p={7}
     >
       <VStack flex={1} space={2}>

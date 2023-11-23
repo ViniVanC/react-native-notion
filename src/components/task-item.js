@@ -29,31 +29,30 @@ const TaskItem = ({
   simultaneousHandlers,
   handleOpenModal,
 }) => {
-
   const [toggleMenu, setToggleMenu] = useState(false);
   const [reminderModal, setReminderModal] = useState(false);
 
   const highlightColor = useToken(
     "colors",
-    useColorModeValue("pink.default", "black.default")
+    useColorModeValue("light.default", "dark.default")
   );
   const boxStroke = useToken(
     "colors",
-    useColorModeValue("pink.default", "black.default")
+    useColorModeValue("light.default", "dark.default")
   );
 
   const checkmarkColor = useToken(
     "colors",
-    useColorModeValue("pink.default", "black.default")
+    useColorModeValue("light.default", "dark.default")
   );
 
   const activeTextColor = useToken(
     "colors",
-    useColorModeValue("pink.default", "black.default")
+    useColorModeValue("light.default", "dark.default")
   );
   const doneTextColor = useToken(
     "colors",
-    useColorModeValue("pink.defaultOpacity", "black.defaultOpacity")
+    useColorModeValue("light.defaultOpacity", "dark.defaultOpacity")
   );
 
   const handleChangeSubject = useCallback(
@@ -101,7 +100,7 @@ const TaskItem = ({
         p={2}
         mt={2}
         rounded={10}
-        bg={useColorModeValue("black.default", "pink.default")}
+        bg={useColorModeValue("dark.default", "light.default")}
         onLongPress={openToggleMenu}
       >
         <ToggleMenu
@@ -132,7 +131,7 @@ const TaskItem = ({
             placeholder="Task"
             value={subject}
             variant="unstyled"
-            color={useColorModeValue("pink.default", "black.default")}
+            color={useColorModeValue("light.default", "dark.default")}
             fontSize={19}
             px={1}
             py={0}

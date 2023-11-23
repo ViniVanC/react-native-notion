@@ -38,7 +38,6 @@ export function Home() {
       const storedData = await AsyncStorage.getItem("todoData");
       if (storedData) {
         const parsedData = JSON.parse(storedData);
-        console.log(2, parsedData);
         parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
         parsedData.tasks.forEach((task) => dispatch(addTask(task)));
         dispatch(addUserName(parsedData.userName));
@@ -67,7 +66,7 @@ export function Home() {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("pink.default", "black.default")}
+      bg={useColorModeValue("light.default", "dark.default")}
       w="full"
     >
       <NameModal nameModal={nameModal} closeNameModal={closeNameModal} />
@@ -75,13 +74,13 @@ export function Home() {
         title={
           <>
             <Text
-              color={useColorModeValue("black.default", "pink.default")}
+              color={useColorModeValue("dark.default", "light.default")}
               fontSize={"4xl"}
               fontWeight={"bold"}
             >
               hi
               <Text
-                color={useColorModeValue("black.default", "pink.default")}
+                color={useColorModeValue("dark.default", "light.default")}
                 px={3}
                 fontSize={"4xl"}
                 onPress={openNameModal}
@@ -91,7 +90,7 @@ export function Home() {
               !
             </Text>
             <Icon
-              color={useColorModeValue("black.default", "pink.default")}
+              color={useColorModeValue("dark.default", "light.default")}
               as={<Feather name="edit" />}
               mt={2}
               ml={1}
@@ -120,7 +119,7 @@ export function Home() {
                   alignItems={"center"}
                   justifyContent={"center"}
                   _text={{
-                    color: useColorModeValue("black.default", "pink.default"),
+                    color: useColorModeValue("dark.default", "light.default"),
                     opacity: 0.5,
                     fontSize: 20,
                   }}
@@ -129,7 +128,7 @@ export function Home() {
                     fontSize={60}
                     lineHeight={60}
                     fontWeight={"bold"}
-                    color={useColorModeValue("black.default", "pink.default")}
+                    color={useColorModeValue("dark.default", "light.default")}
                   >
                     3
                   </Text>
@@ -149,7 +148,7 @@ export function Home() {
                   fontSize={40}
                   lineHeight={40}
                   fontWeight={"semibold"}
-                  color={useColorModeValue("black.default", "pink.default")}
+                  color={useColorModeValue("dark.default", "light.default")}
                 >
                   352
                 </Text>
@@ -206,11 +205,11 @@ export function Home() {
                   rounded={10}
                   p={2}
                   mt={3}
-                  bg={useColorModeValue("black.default", "pink.default")}
+                  bg={useColorModeValue("dark.default", "light.default")}
                   _pressed={{
                     bg: useColorModeValue(
-                      "black.defaultOpacity",
-                      "pink.defaultOpacity"
+                      "dark.defaultOpacity",
+                      "light.defaultOpacity"
                     ),
                   }}
                   onPress={() => navigation.navigate("Tasks")}
@@ -219,7 +218,7 @@ export function Home() {
                     as={Feather}
                     name={"plus"}
                     size="md"
-                    color={useColorModeValue("pink.default", "black.default")}
+                    color={useColorModeValue("light.default", "dark.default")}
                   />
                 </Pressable>
               )}
@@ -236,18 +235,18 @@ export function Home() {
                   p={4}
                   mt={2}
                   rounded={10}
-                  bg={useColorModeValue("black.default", "pink.default")}
+                  bg={useColorModeValue("dark.default", "light.default")}
                 >
                   <Text
                     fontSize={"lg"}
                     fontWeight={"bold"}
-                    color={useColorModeValue("black.default", "pink.default")}
+                    color={useColorModeValue("dark.default", "light.default")}
                   >
                     Note #1
                   </Text>
                   <Text
                     fontSize={"sm"}
-                    color={useColorModeValue("black.default", "pink.default")}
+                    color={useColorModeValue("dark.default", "light.default")}
                   >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Eligendi sequi enim expedita provident dicta similique ipsum

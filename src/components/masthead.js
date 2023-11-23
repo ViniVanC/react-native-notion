@@ -5,7 +5,7 @@ import { Circle, Path, Rect, Svg } from "react-native-svg";
 export const Masthead = ({ title, children }) => {
   const svgIconColor = useToken(
     "colors",
-    useColorModeValue("black.default", "pink.default")
+    useColorModeValue("dark.default", "light.default")
   );
 
   return (

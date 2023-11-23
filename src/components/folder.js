@@ -14,7 +14,6 @@ const Folder = ({
   closeModal,
   taskItemId,
 }) => {
-  
   const dispatch = useDispatch();
   const [editingItemId, setEditingItemId] = useState(null);
 
@@ -43,9 +42,9 @@ const Folder = ({
         justifyContent={"center"}
         rounded={50}
         p={1}
-        bg={useColorModeValue("black.default", "pink.default")}
+        bg={useColorModeValue("dark.default", "light.default")}
         _pressed={{
-          bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
+          bg: useColorModeValue("dark.defaultOpacity", "light.defaultOpacity"),
         }}
         onPress={() => {
           const id = shortid.generate();
@@ -60,7 +59,7 @@ const Folder = ({
         }}
       >
         <Icon
-          color={useColorModeValue("pink.default", "black.default")}
+          color={useColorModeValue("light.default", "dark.default")}
           as={<AntDesign name="plus" />}
           size="sm"
         />

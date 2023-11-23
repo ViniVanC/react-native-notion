@@ -10,8 +10,8 @@ const config = {
 };
 
 const colors = {
-  pink: { default: "#e2cbcd", defaultOpacity: "#e2cbcd95" },
-  black: { default: "#0a1930", defaultOpacity: "#0a193095" },
+  light: { default: "#F5E7C6", defaultOpacity: "#F5E7C695" },
+  dark: { default: "#222222", defaultOpacity: "#22222295" },
   red: "#e03169",
   blueGreen: "#4aa889",
   myYellow: "#e6b86c",

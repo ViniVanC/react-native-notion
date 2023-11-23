@@ -23,20 +23,20 @@ const ToggleMenu = ({
 
   return (
     <Modal isOpen={toggleMenu} onClose={closeToggleMenu} size="xs">
-      <Modal.Content bg={useColorModeValue("pink.default", "black.default")}>
+      <Modal.Content bg={useColorModeValue("light.default", "dark.default")}>
         <Modal.Body>
           <ScrollView horizontal>
             <HStack space={3} justifyContent={"center"}>
               <ToggleMenuItem onPress={handleOpenModal}>
                 <Icon
-                  color={useColorModeValue("pink.default", "black.default")}
+                  color={useColorModeValue("light.default", "dark.default")}
                   as={<Feather name="folder-plus" />}
                   size="lg"
                 />
               </ToggleMenuItem>
               <ToggleMenuItem onPress={handleReminderModal}>
                 <Icon
-                  color={useColorModeValue("pink.default", "black.default")}
+                  color={useColorModeValue("light.default", "dark.default")}
                   as={<Feather name="clock" />}
                   size="lg"
                 />
@@ -46,7 +46,7 @@ const ToggleMenu = ({
           {reminder !== "" && (
             <HStack space={1.5} mt={3} justifyContent={"center"}>
               <Text
-                color={useColorModeValue("black.default", "pink.default")}
+                color={useColorModeValue("dark.default", "light.default")}
                 fontSize={16}
                 fontWeight={"bold"}
               >
@@ -56,7 +56,7 @@ const ToggleMenu = ({
                 })}
               </Text>
               <Text
-                color={useColorModeValue("black.default", "pink.default")}
+                color={useColorModeValue("dark.default", "light.default")}
                 fontSize={16}
                 opacity={0.7}
               >

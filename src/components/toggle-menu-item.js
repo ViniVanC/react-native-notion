@@ -4,9 +4,9 @@ import { useColorModeValue, Pressable } from "native-base";
 const ToggleMenuItem = ({ children, onPress }) => {
   return (
     <Pressable
-      bg={useColorModeValue("black.default", "pink.default")}
+      bg={useColorModeValue("dark.default", "light.default")}
       _pressed={{
-        bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
+        bg: useColorModeValue("dark.defaultOpacity", "light.defaultOpacity"),
       }}
       p={3}
       rounded={50}

@@ -105,19 +105,19 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
 
   return (
     <Modal isOpen={reminderModal} onClose={closeReminderModal} size={"md"}>
-      <Modal.Content bg={useColorModeValue("pink.default", "black.default")}>
+      <Modal.Content bg={useColorModeValue("light.default", "dark.default")}>
         <Modal.CloseButton
-          bg={useColorModeValue("black.default", "pink.default")}
+          bg={useColorModeValue("dark.default", "light.default")}
           rounded={100}
           _icon={{
-            color: useColorModeValue("pink.default", "black.default"),
+            color: useColorModeValue("light.default", "dark.default"),
           }}
         />
         <Modal.Header
-          bg={useColorModeValue("pink.default", "black.default")}
+          bg={useColorModeValue("light.default", "dark.default")}
           borderBottomWidth={0}
           _text={{
-            color: useColorModeValue("black.default", "pink.default"),
+            color: useColorModeValue("dark.default", "light.default"),
             fontWeight: "bold",
           }}
         >
@@ -137,16 +137,16 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
                 onPress={showDatePickerModal}
                 p={4}
                 rounded={50}
-                bg={useColorModeValue("black.default", "pink.default")}
+                bg={useColorModeValue("dark.default", "light.default")}
                 _pressed={{
                   bg: useColorModeValue(
-                    "black.defaultOpacity",
-                    "pink.defaultOpacity"
+                    "dark.defaultOpacity",
+                    "light.defaultOpacity"
                   ),
                 }}
               >
                 <Icon
-                  color={useColorModeValue("pink.default", "black.default")}
+                  color={useColorModeValue("light.default", "dark.default")}
                   as={<Feather name="calendar" />}
                   size="lg"
                 />
@@ -155,16 +155,16 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
                 onPress={showTimePickerModal}
                 p={4}
                 rounded={50}
-                bg={useColorModeValue("black.default", "pink.default")}
+                bg={useColorModeValue("dark.default", "light.default")}
                 _pressed={{
                   bg: useColorModeValue(
-                    "black.defaultOpacity",
-                    "pink.defaultOpacity"
+                    "dark.defaultOpacity",
+                    "light.defaultOpacity"
                   ),
                 }}
               >
                 <Icon
-                  color={useColorModeValue("pink.default", "black.default")}
+                  color={useColorModeValue("light.default", "dark.default")}
                   as={<Feather name="clock" />}
                   size="lg"
                 />
@@ -173,7 +173,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
             {selectedDate && (
               <VStack alignItems={"center"}>
                 <Text
-                  color={useColorModeValue("black.default", "pink.default")}
+                  color={useColorModeValue("dark.default", "light.default")}
                   fontSize="24px"
                   fontWeight={"bold"}
                 >
@@ -183,7 +183,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
                   })}
                 </Text>
                 <Text
-                  color={useColorModeValue("black.default", "pink.default")}
+                  color={useColorModeValue("dark.default", "light.default")}
                   fontSize="19px"
                 >
                   {selectedDate.toLocaleString([], {
@@ -195,7 +195,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
               </VStack>
             )}
             <Text
-              color={useColorModeValue("black.default", "pink.default")}
+              color={useColorModeValue("dark.default", "light.default")}
               fontSize="16px"
               textAlign={"center"}
             >
@@ -206,7 +206,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
         <Modal.Footer
           borderTopWidth={0}
           py={2}
-          bg={useColorModeValue("pink.default", "black.default")}
+          bg={useColorModeValue("light.default", "dark.default")}
         >
           <Pressable
             onPress={() => {
@@ -215,16 +215,16 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
             }}
             p={2}
             rounded={50}
-            bg={useColorModeValue("black.default", "pink.default")}
+            bg={useColorModeValue("dark.default", "light.default")}
             _pressed={{
               bg: useColorModeValue(
-                "black.defaultOpacity",
-                "pink.defaultOpacity"
+                "dark.defaultOpacity",
+                "light.defaultOpacity"
               ),
             }}
           >
             <Icon
-              color={useColorModeValue("pink.default", "black.default")}
+              color={useColorModeValue("light.default", "dark.default")}
               as={<Feather name="check" />}
               size="sm"
             />

@@ -17,13 +17,13 @@ export function ToDo({}) {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("pink.default", "black.default")}
+      bg={useColorModeValue("light.default", "dark.default")}
       w="full"
     >
       <Masthead
         title={
           <Text
-            color={useColorModeValue("black.default", "pink.default")}
+            color={useColorModeValue("dark.default", "light.default")}
             fontSize={"4xl"}
             fontWeight={"bold"}
           >
@@ -36,7 +36,7 @@ export function ToDo({}) {
 
       <VStack
         flex={1}
-        bg={useColorModeValue("pink.default", "black.default")}
+        bg={useColorModeValue("light.default", "dark.default")}
         px="20px"
       >
         <TaskList
@@ -52,15 +52,15 @@ export function ToDo({}) {
         size="sm"
         icon={
           <Icon
-            color={useColorModeValue("pink.default", "black.default")}
+            color={useColorModeValue("light.default", "dark.default")}
             as={<AntDesign name="plus" />}
             size="sm"
           />
         }
         _pressed={{
-          bg: useColorModeValue("black.defaultOpacity", "pink.defaultOpacity"),
+          bg: useColorModeValue("dark.defaultOpacity", "light.defaultOpacity"),
         }}
-        bg={useColorModeValue("black.default", "pink.default")}
+        bg={useColorModeValue("dark.default", "light.default")}
         onPress={() => {
           const id = shortid.generate();
           dispatch(

@@ -8,7 +8,7 @@ export function About() {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("black.default", "pink.default")}
+      bg={useColorModeValue("dark.default", "light.default")}
       w="full"
     >
       <Masthead title={"About"}>

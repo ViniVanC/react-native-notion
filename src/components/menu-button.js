@@ -7,26 +7,26 @@ const MenuButton = ({ active, icon, children, ...props }) => {
     <Button
       size="lg"
       _light={{
-        colorScheme: "pink",
+        colorScheme: "light",
         _pressed: {
-          bg: "#ffffff20",
+          bg: "#00000020",
         },
         _text: {
-          color: active ? "pink.default" : "black.default",
+          color: active ? "light.default" : "dark.default",
         },
       }}
       _dark={{
-        colorScheme: "black",
+        colorScheme: "dark",
         _pressed: {
           bg: "#ffffff20",
         },
         _text: {
-          color: active ? "black.default" : "pink.default",
+          color: active ? "dark.default" : "light.default",
         },
       }}
       bg={
         active
-          ? useColorModeValue("black.default", "pink.default")
+          ? useColorModeValue("dark.default", "light.default")
           : "transparent"
       }
       variant="solid"
@@ -39,8 +39,8 @@ const MenuButton = ({ active, icon, children, ...props }) => {
           opacity={0.6}
           color={
             active
-              ? useColorModeValue("pink.default", "black.default")
-              : useColorModeValue("black.default", "pink.default")
+              ? useColorModeValue("light.default", "dark.default")
+              : useColorModeValue("dark.default", "light.default")
           }
         />
       }

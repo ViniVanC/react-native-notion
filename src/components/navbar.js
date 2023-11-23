@@ -23,7 +23,19 @@ const NavBar = () => {
           as: Feather,
           name: "menu",
           size: 6,
-          color: useColorModeValue("black.default", "pink.default"),
+          color: useColorModeValue("dark.default", "light.default"),
+        }}
+        _light={{
+          colorScheme: "light",
+          _pressed: {
+            bg: "#00000020",
+          },
+        }}
+        _dark={{
+          colorScheme: "dark",
+          _pressed: {
+            bg: "#ffffff20",
+          },
         }}
       />
     </HStack>

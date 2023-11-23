@@ -22,13 +22,13 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
       borderWidth={3}
       borderColor={
         dark
-          ? useColorModeValue("pink.default", "black.default")
-          : useColorModeValue("black.default", "pink.default")
+          ? useColorModeValue("light.default", "dark.default")
+          : useColorModeValue("dark.default", "light.default")
       }
       bg={
         dark
-          ? useColorModeValue("black.default", "pink.default")
-          : useColorModeValue("pink.default", "black.default")
+          ? useColorModeValue("dark.default", "light.default")
+          : useColorModeValue("light.default", "dark.default")
       }
       {...props}
     >
@@ -39,8 +39,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
         borderBottomWidth={2}
         borderBottomColor={
           dark
-            ? useColorModeValue("pink.default", "black.default")
-            : useColorModeValue("black.default", "pink.default")
+            ? useColorModeValue("light.default", "dark.default")
+            : useColorModeValue("dark.default", "light.default")
         }
       >
         <Text
@@ -48,8 +48,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
           fontWeight={"bold"}
           color={
             dark
-              ? useColorModeValue("pink.default", "black.default")
-              : useColorModeValue("black.default", "pink.default")
+              ? useColorModeValue("light.default", "dark.default")
+              : useColorModeValue("dark.default", "light.default")
           }
         >
           {title}
@@ -59,11 +59,11 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
           justifyContent={"center"}
           rounded={10}
           p={1}
-          bg={useColorModeValue("black.default", "pink.default")}
+          bg={useColorModeValue("dark.default", "light.default")}
           _pressed={{
             bg: useColorModeValue(
-              "black.defaultOpacity",
-              "pink.defaultOpacity"
+              "dark.defaultOpacity",
+              "light.defaultOpacity"
             ),
           }}
           onPress={() => navigation.navigate(title)}
@@ -74,8 +74,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
             size="md"
             color={
               dark
-                ? useColorModeValue("black.default", "pink.default")
-                : useColorModeValue("pink.default", "black.default")
+                ? useColorModeValue("dark.default", "light.default")
+                : useColorModeValue("light.default", "dark.default")
             }
           />
         </Pressable>
