@@ -39,7 +39,7 @@ function MoneyList({ data }) {
   return (
     <StyledScrollView>
       <AnimatePresence>
-        <VStack mt={5} px={5} space={3}>
+        <VStack flexDirection={"column-reverse"} mt={5} px={5} space={3}>
           {data.history.map((item) => (
             <AnimatedFolderItem key={item.id} data={item} />
           ))}

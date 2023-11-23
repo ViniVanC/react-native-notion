@@ -24,6 +24,7 @@ import {
   createFolder,
 } from "../redux/actions/todoActions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Purse } from "../components/purse";
 
 export function Home() {
   const dispatch = useDispatch();
@@ -138,69 +139,7 @@ export function Home() {
             </Card>
 
             <Card title="Money" width="45%" dark={true}>
-              <HStack
-                py={5}
-                pb={2}
-                alignItems={"center"}
-                justifyContent={"center"}
-              >
-                <Text
-                  fontSize={20}
-                  color={useColorModeValue("light.default", "dark.default")}
-                >
-                  $
-                </Text>
-                <Text
-                  fontSize={30}
-                  lineHeight={40}
-                  fontWeight={"semibold"}
-                  color={useColorModeValue("light.default", "dark.default")}
-                >
-                  {data.money.value}
-                </Text>
-              </HStack>
-              <HStack justifyContent={"center"} space={2.5}>
-                <Pressable
-                  p={3}
-                  rounded={"full"}
-                  bg={"blueGreen"}
-                  borderWidth={3}
-                  borderColor={useColorModeValue(
-                    "light.default",
-                    "dark.default"
-                  )}
-                  _pressed={{
-                    opacity: 0.5,
-                  }}
-                >
-                  <Icon
-                    as={Feather}
-                    name={"arrow-up"}
-                    size="md"
-                    color={useColorModeValue("light.default", "dark.default")}
-                  />
-                </Pressable>
-                <Pressable
-                  p={3}
-                  rounded={"full"}
-                  bg={"red"}
-                  borderWidth={3}
-                  borderColor={useColorModeValue(
-                    "light.default",
-                    "dark.default"
-                  )}
-                  _pressed={{
-                    opacity: 0.5,
-                  }}
-                >
-                  <Icon
-                    as={Feather}
-                    name={"arrow-down"}
-                    size="md"
-                    color={useColorModeValue("light.default", "dark.default")}
-                  />
-                </Pressable>
-              </HStack>
+              <Purse card={true} />
             </Card>
           </HStack>
           <Card title="Tasks">

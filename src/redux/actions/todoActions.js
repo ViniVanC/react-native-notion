@@ -45,3 +45,8 @@ export const addUserName = (name) => ({
   type: "ADD_USER_NAME",
   payload: name,
 });
+
+export const updateExpense = (value, status) => ({
+  type: "UPDATE_EXPENSE",
+  payload: { value, status },
+});

@@ -23,6 +23,7 @@ export const addTask = (state, action) => {
     const modifiedFoldersWithAll = [newAllFolder, ...state.folders];
 
     saveDataToStorage({
+      money: state.money,
       userName: state.userName,
       tasks: updatedTasks,
       folders: modifiedFoldersWithAll,
@@ -44,6 +45,7 @@ export const addTask = (state, action) => {
   );
 
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: updatedTasks,
     folders: modifiedFolders,
@@ -57,6 +59,7 @@ export const editTask = (state, action) => {
     task.id === action.payload.id ? action.payload : task
   );
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: editedTasks,
     folders: state.folders,
@@ -75,6 +78,7 @@ export const reminderTask = (state, action) => {
   );
 
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: reminderTasks,
     folders: state.folders,
@@ -104,6 +108,7 @@ export const deleteTask = (state, action) => {
   );
 
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: filteredTasks,
     folders: removeModifiedFolders,

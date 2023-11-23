@@ -11,6 +11,7 @@ const saveDataToStorage = async (data) => {
 export const createFolder = (state, action) => {
   const newFolder = [...state.folders, action.payload];
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: state.tasks,
     folders: newFolder,
@@ -26,6 +27,7 @@ export const editFolder = (state, action) => {
     folder.id === action.payload.id ? action.payload : folder
   );
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: state.tasks,
     folders: editedFolders,
@@ -53,6 +55,7 @@ export const addTaskToFolder = (state, action) => {
   });
 
   saveDataToStorage({
+    money: state.money,
     userName: state.userName,
     tasks: updatedTask,
     folders: updatedFolders,
@@ -68,6 +71,7 @@ export const deleteFolder = (state, action) => {
     );
 
     saveDataToStorage({
+      money: state.money,
       userName: state.userName,
       folders: filteredFolders,
       tasks: state.tasks,

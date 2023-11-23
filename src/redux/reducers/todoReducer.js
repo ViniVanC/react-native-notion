@@ -1,17 +1,15 @@
 import * as taskFunctions from "../../utils/task-functions";
 import * as folderFunctions from "../../utils/folder-functions";
 import * as nameFunctions from "../../utils/name-functions";
+import * as moneyFunctions from "../../utils/money-functions";
 
 const initialState = {
   userName: "",
   tasks: [],
   folders: [],
   money: {
-    value: 100.55,
-    history: [
-      { id: 1, date: new Date(), value: 10, status: "+" },
-      { id: 2, date: new Date(), value: 10, status: "-" },
-    ],
+    value: 0,
+    history: [],
   },
 };
 
@@ -35,6 +33,8 @@ const todoReducer = (state = initialState, action) => {
       return folderFunctions.deleteFolder(state, action);
     case "ADD_USER_NAME":
       return nameFunctions.addUserName(state, action);
+    case "UPDATE_EXPENSE":
+      return moneyFunctions.updateExpense(state, action);
     default:
       return state;
   }
