@@ -4,7 +4,7 @@ import NavBar from "../components/navbar";
 import { Masthead } from "../components/masthead";
 import AnimatedColorBox from "../components/animated-color-box";
 
-export function About() {
+export function Notes() {
   return (
     <AnimatedColorBox
       flex={1}
@@ -18,7 +18,7 @@ export function About() {
             fontSize={"4xl"}
             fontWeight={"bold"}
           >
-            About
+            Notes
           </Text>
         }
       >

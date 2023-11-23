@@ -11,8 +11,20 @@ const Sidebar = ({ state, navigation }) => {
     navigation.navigate("Home");
   }, [navigation]);
 
+  const handlePressMenuHabit = useCallback(() => {
+    navigation.navigate("Habit");
+  }, [navigation]);
+
+  const handlePressMenuMoney = useCallback(() => {
+    navigation.navigate("Money");
+  }, [navigation]);
+
   const handlePressMenuTasks = useCallback(() => {
     navigation.navigate("Tasks");
+  }, [navigation]);
+
+  const handlePressMenuNotes = useCallback(() => {
+    navigation.navigate("Notes");
   }, [navigation]);
 
   const handlePressMenuAbout = useCallback(() => {
@@ -41,13 +53,34 @@ const Sidebar = ({ state, navigation }) => {
         >
           Tasks
         </MenuButton>
-        {/* <MenuButton
+        <MenuButton
+          active={currentRoute === "Habit"}
+          onPress={handlePressMenuHabit}
+          icon="calendar-check"
+        >
+          Habit
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === "Money"}
+          onPress={handlePressMenuMoney}
+          icon="coins"
+        >
+          Money
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === "Notes"}
+          onPress={handlePressMenuNotes}
+          icon="book"
+        >
+          Notes
+        </MenuButton>
+        <MenuButton
           active={currentRoute === "About"}
           onPress={handlePressMenuAbout}
           icon="info"
         >
           About
-        </MenuButton> */}
+        </MenuButton>
       </VStack>
       <Center>
         <ThemeToggle />

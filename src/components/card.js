@@ -20,11 +20,7 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
       pt={1.5}
       rounded={10}
       borderWidth={3}
-      borderColor={
-        dark
-          ? useColorModeValue("light.default", "dark.default")
-          : useColorModeValue("dark.default", "light.default")
-      }
+      borderColor={useColorModeValue("dark.default", "light.default")}
       bg={
         dark
           ? useColorModeValue("dark.default", "light.default")
@@ -59,7 +55,11 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
           justifyContent={"center"}
           rounded={10}
           p={1}
-          bg={useColorModeValue("dark.default", "light.default")}
+          bg={
+            dark
+              ? useColorModeValue("light.default", "dark.default")
+              : useColorModeValue("dark.default", "light.default")
+          }
           _pressed={{
             bg: useColorModeValue(
               "dark.defaultOpacity",

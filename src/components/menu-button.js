@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Icon, useColorModeValue } from "native-base";
-import { Feather } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const MenuButton = ({ active, icon, children, ...props }) => {
   return (
@@ -33,7 +33,7 @@ const MenuButton = ({ active, icon, children, ...props }) => {
       justifyContent="flex-start"
       leftIcon={
         <Icon
-          as={Feather}
+          as={FontAwesome5}
           name={icon}
           size="sm"
           opacity={0.6}

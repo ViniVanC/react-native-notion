@@ -106,7 +106,7 @@ export function Home() {
 
       <ScrollView vertical contentContainerStyle={{ minHeight: "100px" }}>
         <VStack flex={1} px={6} pb={5} space={3}>
-          {/* <HStack space={3}>
+          <HStack space={3}>
             <Card title="Habit" width="50%">
               <HStack
                 p={5}
@@ -148,7 +148,7 @@ export function Home() {
                   fontSize={40}
                   lineHeight={40}
                   fontWeight={"semibold"}
-                  color={useColorModeValue("dark.default", "light.default")}
+                  color={useColorModeValue("light.default", "dark.default")}
                 >
                   352
                 </Text>
@@ -188,7 +188,7 @@ export function Home() {
                 </Pressable>
               </HStack>
             </Card>
-          </HStack> */}
+          </HStack>
           <Card title="Tasks">
             <Box maxH={200}>
               {data.tasks.length !== 0 ? (
@@ -224,7 +224,7 @@ export function Home() {
               )}
             </Box>
           </Card>
-          {/* <Card title="Notes" dark={true}>
+          <Card title="Notes" dark={true}>
             <VStack maxH={200}>
               <ScrollView
                 vertical
@@ -240,13 +240,13 @@ export function Home() {
                   <Text
                     fontSize={"lg"}
                     fontWeight={"bold"}
-                    color={useColorModeValue("dark.default", "light.default")}
+                    color={useColorModeValue("light.default", "dark.default")}
                   >
                     Note #1
                   </Text>
                   <Text
                     fontSize={"sm"}
-                    color={useColorModeValue("dark.default", "light.default")}
+                    color={useColorModeValue("light.default", "dark.default")}
                   >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Eligendi sequi enim expedita provident dicta similique ipsum
@@ -257,7 +257,7 @@ export function Home() {
                 </VStack>
               </ScrollView>
             </VStack>
-          </Card> */}
+          </Card>
         </VStack>
       </ScrollView>
     </AnimatedColorBox>
