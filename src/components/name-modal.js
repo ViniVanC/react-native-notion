@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, useColorModeValue, Pressable, Icon, Input } from "native-base";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { addUserName } from "../redux/actions/todoActions";
+import { addUserName } from "../redux/actions/actions";
 
 const NameModal = ({ nameModal, closeNameModal }) => {
   const userNameData = useSelector((state) => state.userName);

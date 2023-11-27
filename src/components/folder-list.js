@@ -3,7 +3,7 @@ import { ScrollView } from "native-base";
 import FolderItem from "./folder-item";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyledComponent } from "../utils/styled";
-import { deleteFolder, editFolder } from "../redux/actions/todoActions";
+import { deleteFolder, editFolder } from "../redux/actions/actions";
 import { AnimatePresence, View } from "moti";
 
 const StyledView = makeStyledComponent(View);

@@ -39,3 +39,24 @@ export const updateExpense = (state, action) => {
     money: value > 0 ? updatedMoney : state.money,
   };
 };
+
+export const updatePurse = (state, action) => {
+  const newValue = action.payload;
+
+  const updatedMoney = {
+    value: parseFloat(newValue),
+    history: state.money.history,
+  };
+
+  saveDataToStorage({
+    money: updatedMoney,
+    tasks: state.tasks,
+    folders: state.folders,
+    userName: state.userName,
+  });
+
+  return {
+    ...state,
+    money: updatedMoney,
+  };
+};

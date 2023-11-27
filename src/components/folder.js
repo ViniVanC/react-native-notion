@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import FolderList from "./folder-list";
-import { createFolder } from "../redux/actions/todoActions";
+import { createFolder } from "../redux/actions/actions";
 import { HStack, Icon, Pressable, useColorModeValue } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import shortid from "shortid";

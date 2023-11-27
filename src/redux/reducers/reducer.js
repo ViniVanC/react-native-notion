@@ -13,7 +13,7 @@ const initialState = {
   },
 };
 
-const todoReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TASK":
       return taskFunctions.addTask(state, action);
@@ -35,9 +35,11 @@ const todoReducer = (state = initialState, action) => {
       return nameFunctions.addUserName(state, action);
     case "UPDATE_EXPENSE":
       return moneyFunctions.updateExpense(state, action);
+    case "UPDATE_PURSE":
+      return moneyFunctions.updatePurse(state, action);
     default:
       return state;
   }
 };
 
-export default todoReducer;
+export default reducer;

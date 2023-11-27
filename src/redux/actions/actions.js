@@ -50,3 +50,8 @@ export const updateExpense = (value, status) => ({
   type: "UPDATE_EXPENSE",
   payload: { value, status },
 });
+
+export const updatePurse = (value) => ({
+  type: "UPDATE_PURSE",
+  payload: value,
+});

@@ -12,7 +12,7 @@ import { Feather } from "@expo/vector-icons";
 import Reminder from "../components/reminder";
 import * as Notifications from "expo-notifications";
 import { useDispatch } from "react-redux";
-import { reminderTask } from "../redux/actions/todoActions";
+import { reminderTask } from "../redux/actions/actions";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

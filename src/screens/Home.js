@@ -23,7 +23,7 @@ import {
   addUserName,
   createFolder,
   updateExpense,
-} from "../redux/actions/todoActions";
+} from "../redux/actions/actions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Purse } from "../components/purse";
 

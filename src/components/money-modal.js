@@ -9,7 +9,7 @@ import {
 } from "native-base";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
-import { updateExpense } from "../redux/actions/todoActions";
+import { updateExpense } from "../redux/actions/actions";
 
 const MoneyModal = ({ moneyModal, statusTransaction, closeMoneyModal }) => {
   const dispatch = useDispatch();
@@ -53,7 +53,6 @@ const MoneyModal = ({ moneyModal, statusTransaction, closeMoneyModal }) => {
               value={amount}
               variant="unstyled"
               color={useColorModeValue("dark.default", "light.default")}
-              
               fontFamily={"eUkraine-Regular"}
               fontSize={"lg"}
               p={0}

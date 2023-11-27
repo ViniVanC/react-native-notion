@@ -7,7 +7,7 @@ import shortid from "shortid";
 import { Masthead } from "../components/masthead";
 import NavBar from "../components/navbar";
 import { useDispatch } from "react-redux";
-import { addTask } from "../redux/actions/todoActions";
+import { addTask } from "../redux/actions/actions";
 
 export function ToDo({}) {
   const dispatch = useDispatch();

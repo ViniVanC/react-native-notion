@@ -4,7 +4,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import TaskItem from "./task-item";
 import { makeStyledComponent } from "../utils/styled";
 import { useSelector, useDispatch } from "react-redux";
-import { editTask, deleteTask } from "../redux/actions/todoActions";
+import { editTask, deleteTask } from "../redux/actions/actions";
 import Folder from "./folder";
 
 const StyledView = makeStyledComponent(View);

@@ -6,22 +6,36 @@ import {
   Icon,
   Box,
   HStack,
+  VStack,
 } from "native-base";
 import { Feather } from "@expo/vector-icons";
 
 function MoneyItem({ date, value, status }) {
   return (
-    <Pressable flexDirection={"row"} gap={3} alignItems={"center"}>
+    <Pressable
+      py={2}
+      pl={2}
+      flexDirection={"row"}
+      gap={3}
+      alignItems={"center"}
+      borderWidth={3}
+      borderColor={useColorModeValue("dark.default", "light.default")}
+      rounded={15}
+      bg={useColorModeValue("dark.default", "light.default")}
+    >
       <Box
+        position={"absolute"}
+        left={5}
+        opacity={0.3}
         p={2}
         rounded={"full"}
         bg={`${status === "+" ? "blueGreen" : "red"}`}
         borderWidth={3}
-        borderColor={useColorModeValue("dark.default", "light.default")}
+        borderColor={useColorModeValue("light.default", "dark.default")}
         _pressed={{
           borderColor: useColorModeValue(
-            "dark.defaultOpacity",
-            "light.defaultOpacity"
+            "light.defaultOpacity",
+            "dark.defaultOpacity"
           ),
         }}
       >
@@ -29,25 +43,46 @@ function MoneyItem({ date, value, status }) {
           as={Feather}
           name={`arrow-${status === "+" ? "up" : "down"}`}
           size="md"
-          color={useColorModeValue("dark.default", "light.default")}
+          color={useColorModeValue("light.default", "dark.default")}
         />
       </Box>
-      <HStack space={2}>
+      <HStack space={2} alignItems={"center"}>
         <Text
-          fontFamily={"eUkraine-Regular"}
-          fontSize={16}
-          color={useColorModeValue("dark.default", "light.default")}
+          fontFamily={"eUkraine-Bold"}
+          fontSize={30}
+          color={useColorModeValue("light.default", "dark.default")}
         >
           {date.toLocaleString([], {
-            year: "numeric",
-            month: "numeric",
             day: "numeric",
           })}
         </Text>
+        <VStack>
+          <Text
+            fontFamily={"eUkraineHead-Regular"}
+            fontSize={14}
+            opacity={0.8}
+            color={useColorModeValue("light.default", "dark.default")}
+          >
+            {date
+              .toLocaleDateString([], { weekday: "long" })
+              .split(",")
+              .splice(0, 1)}
+          </Text>
+          <Text
+            fontFamily={"eUkraine-Regular"}
+            fontSize={16}
+            color={useColorModeValue("light.default", "dark.default")}
+          >
+            {date.toLocaleString([], {
+              year: "numeric",
+              month: "short",
+            })}
+          </Text>
+        </VStack>
         {/* <Text
           fontFamily={"eUkraine-Regular"} fontSize={16}
           opacity={0.7}
-          color={useColorModeValue("dark.default", "light.default")}
+          color={useColorModeValue("light.default", "dark.default")}
         >
           {date.toLocaleTimeString("uk-UA", {
             hour: "2-digit",

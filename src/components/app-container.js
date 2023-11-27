@@ -4,7 +4,7 @@ import { NativeBaseProvider } from "native-base";
 import theme from "../theme";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import rootReducer from "../redux/reducers/todoReducer";
+import rootReducer from "../redux/reducers/reducer";
 import { useFonts } from "expo-font";
 
 const store = createStore(rootReducer);
@@ -21,7 +21,7 @@ export default function AppContainer({ children }) {
     // "eUkraineHead-Thin": require("../assets/fonts/e-Ukraine/e-UkraineHead-Thin.otf"),
     // "eUkraineHead-UltraLight": require("../assets/fonts/e-Ukraine/e-UkraineHead-UltraLight.otf"),
     // "eUkraineHead-Light": require("../assets/fonts/e-Ukraine/e-UkraineHead-Light.otf"),
-    "eUkraine-Regular": require("../assets/fonts/e-Ukraine/e-UkraineHead-Regular.otf"),
+    "eUkraineHead-Regular": require("../assets/fonts/e-Ukraine/e-UkraineHead-Regular.otf"),
     // "eUkraineHead-Medium": require("../assets/fonts/e-Ukraine/e-UkraineHead-Medium.otf"),
     "eUkraineHead-Bold": require("../assets/fonts/e-Ukraine/e-UkraineHead-Bold.otf"),
     "eUkraineHead-NAME": require("../assets/fonts/e-Ukraine/e-UkraineHead-NAME.otf"),

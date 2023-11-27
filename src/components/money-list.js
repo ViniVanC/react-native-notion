@@ -1,7 +1,6 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { ScrollView, VStack } from "native-base";
 import MoneyItem from "./money-item";
-import { useDispatch, useSelector } from "react-redux";
 import { makeStyledComponent } from "../utils/styled";
 import { AnimatePresence, View } from "moti";
 
@@ -39,7 +38,7 @@ function MoneyList({ data }) {
   return (
     <StyledScrollView>
       <AnimatePresence>
-        <VStack flexDirection={"column-reverse"} mt={5} px={5} space={3}>
+        <VStack flexDirection={"column-reverse"} mb={5} px={5} space={1.5}>
           {data.history.map((item) => (
             <AnimatedFolderItem key={item.id} data={item} />
           ))}

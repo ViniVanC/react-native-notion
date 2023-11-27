@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Modal, useColorModeValue, Pressable, Icon } from "native-base";
 import FolderList from "./folder-list";
-import { addTaskToFolder } from "../redux/actions/todoActions";
+import { addTaskToFolder } from "../redux/actions/actions";
 import { useDispatch } from "react-redux";
 import { Feather } from "@expo/vector-icons";
 
