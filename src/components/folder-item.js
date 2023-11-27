@@ -32,7 +32,7 @@ function FolderItem({
       value={name}
       variant="unstyled"
       color={useColorModeValue("dark.default", "light.default")}
-      fontWeight={"bold"}
+      fontFamily={"eUkraine-Regular"}
       fontSize={"lg"}
       px={2.5}
       py={0}
@@ -60,8 +60,8 @@ function FolderItem({
         onPress={() => setCurrentFolder(id)}
       >
         <Text
+          fontFamily={"eUkraine-Regular"}
           fontSize={"lg"}
-          fontWeight={"bold"}
           color={
             id === currentFolder
               ? useColorModeValue("light.default", "dark.default")

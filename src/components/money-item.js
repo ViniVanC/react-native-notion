@@ -34,8 +34,8 @@ function MoneyItem({ date, value, status }) {
       </Box>
       <HStack space={2}>
         <Text
+          fontFamily={"eUkraine-Regular"}
           fontSize={16}
-          fontWeight={"bold"}
           color={useColorModeValue("dark.default", "light.default")}
         >
           {date.toLocaleString([], {
@@ -45,8 +45,7 @@ function MoneyItem({ date, value, status }) {
           })}
         </Text>
         {/* <Text
-          fontSize={16}
-          fontWeight={"bold"}
+          fontFamily={"eUkraine-Regular"} fontSize={16}
           opacity={0.7}
           color={useColorModeValue("dark.default", "light.default")}
         >
@@ -58,8 +57,8 @@ function MoneyItem({ date, value, status }) {
       </HStack>
       <Text
         ml={"auto"}
+        fontFamily={"eUkraine-Regular"}
         fontSize={20}
-        fontWeight={"bold"}
         color={`${status === "+" ? "blueGreen" : "red"}`}
       >
         {status === "+" ? `+${value}` : `-${value}`}

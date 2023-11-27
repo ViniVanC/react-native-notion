@@ -40,8 +40,8 @@ const Card = ({ children, title, width = "100%", dark = false, ...props }) => {
         }
       >
         <Text
+          fontFamily={"eUkraine-Regular"}
           fontSize={"lg"}
-          fontWeight={"bold"}
           color={
             dark
               ? useColorModeValue("light.default", "dark.default")

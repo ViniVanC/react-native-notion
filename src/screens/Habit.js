@@ -15,8 +15,8 @@ export function Habit() {
         title={
           <Text
             color={useColorModeValue("dark.default", "light.default")}
+            fontFamily={"eUkraineHead-NAME"}
             fontSize={"4xl"}
-            fontWeight={"bold"}
           >
             Habit
           </Text>

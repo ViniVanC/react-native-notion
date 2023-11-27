@@ -15,8 +15,8 @@ export function About() {
         title={
           <Text
             color={useColorModeValue("dark.default", "light.default")}
+            fontFamily={"eUkraineHead-NAME"}
             fontSize={"4xl"}
-            fontWeight={"bold"}
           >
             About
           </Text>

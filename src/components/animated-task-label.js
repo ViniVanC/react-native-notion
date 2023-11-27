@@ -69,6 +69,7 @@ const AnimatedTaskLabel = memo(
       <Pressable onPress={onPress}>
         <AnimatedHStack alignItems="center" style={[hstackAnimatedStyles]}>
           <AnimatedText
+            fontFamily={"eUkraine-Regular"}
             fontSize={19}
             noOfLines={1}
             isTruncated

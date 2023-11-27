@@ -47,8 +47,8 @@ const ToggleMenu = ({
             <HStack space={1.5} mt={3} justifyContent={"center"}>
               <Text
                 color={useColorModeValue("dark.default", "light.default")}
+                fontFamily={"eUkraine-Regular"}
                 fontSize={16}
-                fontWeight={"bold"}
               >
                 {reminderDateTime.toLocaleTimeString("uk-UA", {
                   hour: "2-digit",
@@ -57,6 +57,7 @@ const ToggleMenu = ({
               </Text>
               <Text
                 color={useColorModeValue("dark.default", "light.default")}
+                fontFamily={"eUkraine-Regular"}
                 fontSize={16}
                 opacity={0.7}
               >

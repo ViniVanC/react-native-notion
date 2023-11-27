@@ -27,6 +27,7 @@ export function Purse({ card = false }) {
     <>
       <HStack py={5} pb={2} alignItems={"flex-end"} justifyContent={"center"}>
         <Text
+          fontFamily={"eUkraine-Regular"}
           fontSize={card ? 20 : 30}
           pb={card ? 2 : 3.5}
           color={
@@ -38,8 +39,8 @@ export function Purse({ card = false }) {
           $
         </Text>
         <Text
+          fontFamily={"eUkraine-Regular"}
           fontSize={card ? 30 : 60}
-          fontWeight={"bold"}
           color={
             card
               ? useColorModeValue("light.default", "dark.default")

@@ -132,6 +132,7 @@ const TaskItem = ({
             value={subject}
             variant="unstyled"
             color={useColorModeValue("light.default", "dark.default")}
+            fontFamily={"eUkraine-Regular"}
             fontSize={19}
             px={1}
             py={0}

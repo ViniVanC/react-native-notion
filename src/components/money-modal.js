@@ -40,7 +40,7 @@ const MoneyModal = ({ moneyModal, statusTransaction, closeMoneyModal }) => {
           borderBottomWidth={0}
           _text={{
             color: useColorModeValue("dark.default", "light.default"),
-            fontWeight: "bold",
+            fontFamily: "eUkraineHead-Bold",
           }}
         >
           Money
@@ -53,7 +53,8 @@ const MoneyModal = ({ moneyModal, statusTransaction, closeMoneyModal }) => {
               value={amount}
               variant="unstyled"
               color={useColorModeValue("dark.default", "light.default")}
-              fontWeight={"bold"}
+              
+              fontFamily={"eUkraine-Regular"}
               fontSize={"lg"}
               p={0}
               autoFocus

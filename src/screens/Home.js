@@ -81,12 +81,13 @@ export function Home() {
             <Text
               color={useColorModeValue("dark.default", "light.default")}
               fontSize={"4xl"}
-              fontWeight={"bold"}
+              fontFamily={"eUkraineHead-NAME"}
             >
               hi
               <Text
                 color={useColorModeValue("dark.default", "light.default")}
                 px={3}
+                fontFamily={"eUkraine-Regular"}
                 fontSize={"4xl"}
                 onPress={openNameModal}
               >
@@ -126,13 +127,12 @@ export function Home() {
                   _text={{
                     color: useColorModeValue("dark.default", "light.default"),
                     opacity: 0.5,
-                    fontSize: 20,
+                    fontFamily={"eUkraine-Regular"} fontSize: 20,
                   }}
                 >
                   <Text
-                    fontSize={60}
+                    fontFamily={"eUkraine-Regular"} fontSize={60}
                     lineHeight={60}
-                    fontWeight={"bold"}
                     color={useColorModeValue("dark.default", "light.default")}
                   >
                     3
@@ -199,14 +199,13 @@ export function Home() {
                   bg={useColorModeValue("dark.default", "light.default")}
                 >
                   <Text
-                    fontSize={"lg"}
-                    fontWeight={"bold"}
+                    fontFamily={"eUkraine-Regular"} fontSize={"lg"}
                     color={useColorModeValue("light.default", "dark.default")}
                   >
                     Note #1
                   </Text>
                   <Text
-                    fontSize={"sm"}
+                    fontFamily={"eUkraine-Regular"} fontSize={"sm"}
                     color={useColorModeValue("light.default", "dark.default")}
                   >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.

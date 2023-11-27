@@ -118,7 +118,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
           borderBottomWidth={0}
           _text={{
             color: useColorModeValue("dark.default", "light.default"),
-            fontWeight: "bold",
+            fontFamily: "eUkraineHead-Bold",
           }}
         >
           Reminder
@@ -174,8 +174,8 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
               <VStack alignItems={"center"}>
                 <Text
                   color={useColorModeValue("dark.default", "light.default")}
+                  fontFamily={"eUkraine-Regular"}
                   fontSize="24px"
-                  fontWeight={"bold"}
                 >
                   {selectedDate.toLocaleTimeString("uk-UA", {
                     hour: "2-digit",
@@ -184,6 +184,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
                 </Text>
                 <Text
                   color={useColorModeValue("dark.default", "light.default")}
+                  fontFamily={"eUkraine-Regular"}
                   fontSize="19px"
                 >
                   {selectedDate.toLocaleString([], {
@@ -196,6 +197,7 @@ const ReminderModal = ({ id, reminderModal, closeReminderModal, subject }) => {
             )}
             <Text
               color={useColorModeValue("dark.default", "light.default")}
+              fontFamily={"eUkraine-Regular"}
               fontSize="16px"
               textAlign={"center"}
             >

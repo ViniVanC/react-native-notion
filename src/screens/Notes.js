@@ -15,8 +15,8 @@ export function Notes() {
         title={
           <Text
             color={useColorModeValue("dark.default", "light.default")}
+            fontFamily={"eUkraineHead-NAME"}
             fontSize={"4xl"}
-            fontWeight={"bold"}
           >
             Notes
           </Text>

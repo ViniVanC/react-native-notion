@@ -34,7 +34,8 @@ const NameModal = ({ nameModal, closeNameModal }) => {
           borderBottomWidth={0}
           _text={{
             color: useColorModeValue("dark.default", "light.default"),
-            fontWeight: "bold",
+            fontFamily: "eUkraineHead-Bold",
+            fontSize: "14px",
           }}
         >
           {userNameData === ""
@@ -47,7 +48,7 @@ const NameModal = ({ nameModal, closeNameModal }) => {
             value={userName}
             variant="unstyled"
             color={useColorModeValue("dark.default", "light.default")}
-            fontWeight={"bold"}
+            fontFamily={"eUkraine-Regular"}
             fontSize={"lg"}
             p={0}
             autoFocus

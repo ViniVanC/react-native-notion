@@ -38,7 +38,7 @@ const FolderPopup = ({
           borderBottomWidth={0}
           _text={{
             color: useColorModeValue("dark.default", "light.default"),
-            fontWeight: "bold",
+            fontFamily: "eUkraineHead-Bold",
           }}
         >
           Folders

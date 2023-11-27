@@ -13,6 +13,7 @@ const MenuButton = ({ active, icon, children, ...props }) => {
         },
         _text: {
           color: active ? "light.default" : "dark.default",
+          fontFamily: "eUkraine-Regular",
         },
       }}
       _dark={{
@@ -22,6 +23,7 @@ const MenuButton = ({ active, icon, children, ...props }) => {
         },
         _text: {
           color: active ? "dark.default" : "light.default",
+          fontFamily: "eUkraine-Regular",
         },
       }}
       bg={
