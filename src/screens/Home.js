@@ -23,6 +23,7 @@ import {
   addUserName,
   createFolder,
   updateExpense,
+  updatePurse,
 } from "../redux/actions/actions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Purse } from "../components/purse";
@@ -45,6 +46,7 @@ export function Home() {
         parsedData.money.history.forEach((transaction) =>
           dispatch(updateExpense(transaction.value, transaction.status))
         );
+        dispatch(updatePurse(parsedData.money.value));
         dispatch(addUserName(parsedData.userName));
         if (parsedData.userName === "") {
           openNameModal();

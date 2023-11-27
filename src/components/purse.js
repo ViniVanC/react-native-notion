@@ -100,7 +100,11 @@ export function Purse({ card = false }) {
               {data.value}
             </Text>
             <Icon
-              color={useColorModeValue("light.default", "dark.default")}
+              color={
+                card
+                  ? useColorModeValue("light.default", "dark.default")
+                  : useColorModeValue("dark.default", "light.default")
+              }
               as={<Feather name="edit" />}
               mb={5}
               ml={1}
