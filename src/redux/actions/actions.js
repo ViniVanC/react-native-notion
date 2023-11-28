@@ -13,6 +13,20 @@ export const deleteTask = (taskId) => ({
   payload: taskId,
 });
 
+export const addNote = () => ({
+  type: "ADD_NOTE",
+});
+
+export const editNote = (note) => ({
+  type: "EDIT_NOTE",
+  payload: note,
+});
+
+export const deleteNote = (noteId) => ({
+  type: "DELETE_NOTE",
+  payload: noteId,
+});
+
 export const createFolder = (folderName) => ({
   type: "CREATE_FOLDER",
   payload: folderName,

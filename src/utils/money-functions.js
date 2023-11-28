@@ -49,6 +49,7 @@ export const updatePurse = (state, action) => {
   };
 
   saveDataToStorage({
+    notes: state.notes,
     money: updatedMoney,
     tasks: state.tasks,
     folders: state.folders,

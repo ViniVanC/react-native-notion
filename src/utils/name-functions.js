@@ -11,6 +11,7 @@ const saveDataToStorage = async (data) => {
 export const addUserName = (state, action) => {
   const newUserName = action.payload;
   saveDataToStorage({
+    notes: state.notes,
     money: state.money,
     tasks: state.tasks,
     folders: state.folders,

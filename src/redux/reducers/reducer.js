@@ -2,6 +2,7 @@ import * as taskFunctions from "../../utils/task-functions";
 import * as folderFunctions from "../../utils/folder-functions";
 import * as nameFunctions from "../../utils/name-functions";
 import * as moneyFunctions from "../../utils/money-functions";
+import * as notesFunctions from "../../utils/notes-functions";
 
 const initialState = {
   userName: "",
@@ -11,6 +12,14 @@ const initialState = {
     value: 0,
     history: [],
   },
+  notes: [
+    {
+      id: 1,
+      title: "",
+      content: "",
+      folders: ["all"],
+    },
+  ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +32,14 @@ const reducer = (state = initialState, action) => {
       return taskFunctions.reminderTask(state, action);
     case "DELETE_TASK":
       return taskFunctions.deleteTask(state, action);
+
+    case "ADD_NOTE":
+      return notesFunctions.addNote(state, action);
+    case "EDIT_NOTE":
+      return notesFunctions.editNote(state, action);
+    case "DELETE_NOTE":
+      return notesFunctions.deleteNote(state, action);
+
     case "CREATE_FOLDER":
       return folderFunctions.createFolder(state, action);
     case "EDIT_FOLDER":
@@ -31,12 +48,15 @@ const reducer = (state = initialState, action) => {
       return folderFunctions.addTaskToFolder(state, action);
     case "DELETE_FOLDER":
       return folderFunctions.deleteFolder(state, action);
+
     case "ADD_USER_NAME":
       return nameFunctions.addUserName(state, action);
+
     case "UPDATE_EXPENSE":
       return moneyFunctions.updateExpense(state, action);
     case "UPDATE_PURSE":
       return moneyFunctions.updatePurse(state, action);
+
     default:
       return state;
   }

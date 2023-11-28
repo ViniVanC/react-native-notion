@@ -45,6 +45,7 @@ export const addTask = (state, action) => {
   );
 
   saveDataToStorage({
+    notes: state.notes,
     money: state.money,
     userName: state.userName,
     tasks: updatedTasks,
@@ -59,6 +60,7 @@ export const editTask = (state, action) => {
     task.id === action.payload.id ? action.payload : task
   );
   saveDataToStorage({
+    notes: state.notes,
     money: state.money,
     userName: state.userName,
     tasks: editedTasks,
@@ -78,6 +80,7 @@ export const reminderTask = (state, action) => {
   );
 
   saveDataToStorage({
+    notes: state.notes,
     money: state.money,
     userName: state.userName,
     tasks: reminderTasks,
@@ -108,6 +111,7 @@ export const deleteTask = (state, action) => {
   );
 
   saveDataToStorage({
+    notes: state.notes,
     money: state.money,
     userName: state.userName,
     tasks: filteredTasks,
