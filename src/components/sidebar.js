@@ -67,20 +67,22 @@ const Sidebar = ({ state, navigation }) => {
         >
           Money
         </MenuButton>
-        {/* <MenuButton
+         <MenuButton
           active={currentRoute === "Notes"}
           onPress={handlePressMenuNotes}
           icon="book"
         >
           Notes
         </MenuButton>
+          {/*
         <MenuButton
           active={currentRoute === "About"}
           onPress={handlePressMenuAbout}
           icon="info"
         >
           About
-        </MenuButton> */}
+        </MenuButton> 
+        */}
       </VStack>
       <Center>
         <ThemeToggle />

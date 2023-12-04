@@ -13,8 +13,9 @@ export const deleteTask = (taskId) => ({
   payload: taskId,
 });
 
-export const addNote = () => ({
+export const addNote = (note) => ({
   type: "ADD_NOTE",
+  payload: note,
 });
 
 export const editNote = (note) => ({

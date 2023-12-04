@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import NameModal from "../components/name-modal";
 import {
+  addNote,
   addTask,
   addUserName,
   createFolder,
@@ -27,6 +28,7 @@ import {
 } from "../redux/actions/actions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Purse } from "../components/purse";
+import NoteList from "../components/note-list";
 
 export function Home() {
   const dispatch = useDispatch();
@@ -41,11 +43,22 @@ export function Home() {
       const storedData = await AsyncStorage.getItem("appData");
       if (storedData) {
         const parsedData = JSON.parse(storedData);
-        parsedData.folders.forEach((folder) => dispatch(createFolder(folder)));
-        parsedData.tasks.forEach((task) => dispatch(addTask(task)));
-        parsedData.money.history.forEach((transaction) =>
-          dispatch(updateExpense(transaction.value, transaction.status))
-        );
+        if (data.folders.length === 0) {
+          parsedData.folders.forEach((folder) =>
+            dispatch(createFolder(folder))
+          );
+        }
+        if (data.tasks.length === 0) {
+          parsedData.tasks.forEach((task) => dispatch(addTask(task)));
+        }
+        if (data.notes.length === 0) {
+          parsedData.notes.forEach((note) => dispatch(addNote(note)));
+        }
+        if (data.money.history.length === 0) {
+          parsedData.money.history.forEach((transaction) =>
+            dispatch(updateExpense(transaction.value, transaction.status))
+          );
+        }
         dispatch(updatePurse(parsedData.money.value));
         dispatch(addUserName(parsedData.userName));
         if (parsedData.userName === "") {
@@ -58,7 +71,12 @@ export function Home() {
   };
 
   useEffect(() => {
-    if (data.folders.length === 0) {
+    if (
+      data.folders.length === 0 ||
+      data.tasks.length === 0 ||
+      data.notes.length === 0 ||
+      data.money.history.length === 0
+    ) {
       loadTasksFromStorage();
     }
   }, []);
@@ -187,39 +205,39 @@ export function Home() {
               )}
             </Box>
           </Card>
-          {/* <Card title="Notes" dark={true}>
-            <VStack maxH={200}>
-              <ScrollView
-                vertical
-                nestedScrollEnabled={true}
-                contentContainerStyle={{ minHeight: "100px" }}
-              >
-                <VStack
-                  p={4}
-                  mt={2}
+          <Card title="Notes">
+            <Box maxH={200}>
+              {data.tasks.length !== 0 ? (
+                <NoteList
+                  editingItemId={editingItemId}
+                  setEditingItemId={setEditingItemId}
+                />
+              ) : (
+                <Pressable
+                  alignItems={"center"}
+                  justifyContent={"center"}
                   rounded={10}
+                  p={2}
+                  mt={3}
                   bg={useColorModeValue("dark.default", "light.default")}
+                  _pressed={{
+                    bg: useColorModeValue(
+                      "dark.defaultOpacity",
+                      "light.defaultOpacity"
+                    ),
+                  }}
+                  onPress={() => navigation.navigate("Notes")}
                 >
-                  <Text
-                    fontFamily={"eUkraine-Regular"} fontSize={"lg"}
+                  <Icon
+                    as={Feather}
+                    name={"plus"}
+                    size="md"
                     color={useColorModeValue("light.default", "dark.default")}
-                  >
-                    Note #1
-                  </Text>
-                  <Text
-                    fontFamily={"eUkraine-Regular"} fontSize={"sm"}
-                    color={useColorModeValue("light.default", "dark.default")}
-                  >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Eligendi sequi enim expedita provident dicta similique ipsum
-                    delectus voluptas. Aspernatur quae fugit ab dolores
-                    excepturi magnam temporibus doloribus? Quae, quibusdam
-                    consequatur.
-                  </Text>
-                </VStack>
-              </ScrollView>
-            </VStack>
-          </Card> */}
+                  />
+                </Pressable>
+              )}
+            </Box>
+          </Card>
         </VStack>
       </ScrollView>
     </AnimatedColorBox>

@@ -7,6 +7,7 @@ import { Habit } from "./screens/Habit";
 import { Money } from "./screens/Money";
 import { Notes } from "./screens/Notes";
 import { About } from "./screens/About";
+import { NoteDetailScreen } from "./components/note-detail-screen";
 
 const Drawer = createDrawerNavigator();
 
@@ -26,6 +27,7 @@ const App = () => {
       <Drawer.Screen name="Money" component={Money} />
       <Drawer.Screen name="Tasks" component={ToDo} />
       <Drawer.Screen name="Notes" component={Notes} />
+      <Drawer.Screen name="NoteDetail" component={NoteDetailScreen} />
       <Drawer.Screen name="About" component={About} />
     </Drawer.Navigator>
   );

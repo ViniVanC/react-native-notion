@@ -9,17 +9,10 @@ const saveDataToStorage = async (data) => {
 };
 
 export const addNote = (state, action) => {
-  const newNote = {
-    id: state.notes.length + 1,
-    title: "",
-    content: "",
-    folders: ["all"],
-  };
-
-  const updatedNotes = [...state.notes, newNote];
+  const newNotes = [...state.notes, action.payload];
 
   saveDataToStorage({
-    notes: updatedNotes,
+    notes: newNotes,
     money: state.money,
     userName: state.userName,
     tasks: state.tasks,
@@ -28,7 +21,7 @@ export const addNote = (state, action) => {
 
   return {
     ...state,
-    notes: updatedNotes,
+    notes: newNotes,
   };
 };
 
